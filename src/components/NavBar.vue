@@ -1,18 +1,22 @@
 <template>
   <div class="navbar">
-    <a href="#"><NavBarLogo/></a>
+    <NavBarLogo/>
+    <NavBarMenu/>
+    <NavBarCart/>
   </div>
 </template>
 
 <script>
 import NavBarLogo from '@/components/NavBarLogo.vue'
+import NavBarMenu from '@/components/NavBarMenu.vue'
+import NavBarCart from '@/components/NavBarCart.vue'
 
 export default {
   name: 'NavBar',
   components: {
     NavBarLogo,
-  //   // NavBarMenu,
-  //   // NavBarCartIcon
+    NavBarMenu,
+    NavBarCart
   }
 }
 </script>
