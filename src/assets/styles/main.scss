@@ -1,2 +1,36 @@
 @import url(_normalize.scss);
 
+$container-background-color: #E5E5E5;
+$components-background-color: #FFFFFF;
+$text-color: #424242;
+$accent-color: #FF6969;
+
+.effect-shadow {
+  background: #C4C4C4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: $container-background-color;
+}
+
+.navbar {
+  height: 60px;
+  background-color: $components-background-color;
+}
+
+.navbar__logo {
+  height: 61px;
+  width: 165px;
+  background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
+}

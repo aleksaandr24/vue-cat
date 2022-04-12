@@ -1,15 +1,15 @@
 <template>
-  <h1>Shop</h1>
+  <TheContainer/>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import TheContainer from '@/components/TheContainer.vue'
 
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    TheContainer
+  }
 }
 </script>
 
