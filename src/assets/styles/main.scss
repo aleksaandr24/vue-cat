@@ -5,6 +5,7 @@
 
 $container-background-color: #E5E5E5;
 $components-background-color: #FFFFFF;
+$components-border: 1px solid #E4E4E4;
 $text-color: #424242;
 $accent-color: #FF6969;
 $accent-background-text: #FFFFFF;
@@ -61,7 +62,7 @@ body {
 }
 
 .navbar__logo {
-  height: 61px;
+  height: 60px;
   flex-basis: 165px;
   background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
 }
@@ -99,7 +100,7 @@ body {
 
 .navbar__cart {
   height: 100%;
-  flex-basis: 56px;
+  flex-basis: 49px;
   @include flex-v-center;
 }
 
@@ -119,4 +120,50 @@ body {
   background: url('@/assets/images/navbar__ellipse-icon.svg') no-repeat;
   @include flex-vh-center;
   @include main-text(11px, 13px, $accent-background-text);
+}
+
+.main-container {
+  min-height: 985px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.side-menu {
+  min-width: 325px;
+  background-color: $components-background-color;
+  @include effect-shadow;
+}
+
+.side-menu__item {
+  height: 34px;
+  margin-top: 19px;
+  padding-left: 29px;
+  border-bottom: $components-border;
+  @include main-text(16px, 19px, $text-color)
+}
+
+.side-menu__link {
+  color: $text-color;
+  text-decoration: none;
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.main-catalog {
+  padding: 54px 0 0 36px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
+
+.main-catalog__item {
+  height: 418px;
+  min-width: 353px;
+  max-width: 353px;
+  margin-right: 33px;
+  background-color: $components-background-color;
+  border-radius: 10px;
+  @include effect-shadow;
 }
