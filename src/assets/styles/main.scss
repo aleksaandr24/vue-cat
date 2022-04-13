@@ -3,9 +3,15 @@
   src: url('@/assets/fonts/Roboto-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('@/assets/fonts/Roboto-Bold.ttf');
+}
+
 $container-background-color: #E5E5E5;
 $components-background-color: #FFFFFF;
 $components-border: 1px solid #E4E4E4;
+$components-border-radius: 10px;
 $text-color: #424242;
 $accent-color: #FF6969;
 $accent-background-text: #FFFFFF;
@@ -14,10 +20,19 @@ $accent-background-text: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
 }
 
+
 @mixin main-text($size, $height, $color) {
   font-family: 'RobotoRegular';
   font-style: normal;
   font-weight: 400;
+  font-size: $size;
+  line-height: $height;
+  color: $color;
+}
+
+@mixin main-text-bold($size, $height, $color) {
+  font-family: 'RobotoBold';
+  font-style: normal;
   font-size: $size;
   line-height: $height;
   color: $color;
@@ -164,6 +179,47 @@ body {
   max-width: 353px;
   margin-right: 33px;
   background-color: $components-background-color;
-  border-radius: 10px;
+  border-radius: $components-border-radius;
   @include effect-shadow;
+}
+
+.item__image {
+  height: 246px;
+  width: 100%;
+  border-radius: $components-border-radius;
+}
+
+.item__name {
+  height: 44px;
+  padding-left: 29px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 500;
+  @include main-text(18px, 21px, $text-color)
+}
+
+.item__cost {
+  height: 30px;
+  padding-left: 29px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 700;
+  @include main-text-bold(18px, 21px, $text-color)
+}
+
+.item__cart-button {
+  height: 72px;
+  padding-left: 29px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cart-button {
+  height: 40px;
+  width: 219px;
+  background: $accent-color;
+  border: none;
+  border-radius: 5px;
+  @include effect-shadow;
+  @include main-text-bold(18px, 21px, $components-background-color)
 }
