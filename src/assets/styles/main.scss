@@ -62,13 +62,17 @@ body {
 
 .navbar__logo {
   height: 61px;
-  width: 165px;
+  flex-basis: 165px;
   background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
 }
 
 .logo-link {
   height: 100%;
   width: 100%;
+}
+
+.navbar__menu {
+  flex-grow: 1;
 }
 
 .navbar__menu-list {
@@ -95,17 +99,18 @@ body {
 
 .navbar__cart {
   height: 100%;
-  width: 28px;
+  flex-basis: 56px;
   @include flex-v-center;
 }
 
-.cart-icon {
+.cart__icon {
   height: 21px;
   width: 21px;
   background: url('@/assets/images/navbar__cart-icon.svg') no-repeat;
+  cursor: pointer;
 }
 
-.cart-bubble {
+.cart__bubble {
   height: 18px;
   width: 18px;
   position: relative;

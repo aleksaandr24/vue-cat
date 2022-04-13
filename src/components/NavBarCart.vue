@@ -1,7 +1,7 @@
 <template>
   <div class="navbar__cart">
-    <div class="cart-icon">
-      <div class="cart-bubble">
+    <div class="cart__icon">
+      <div class="cart__bubble">
         15
       </div>
     </div>
