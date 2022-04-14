@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @click="increment">
+  <div class="container">
     <NavBar/>
     <MainContainer/>
   </div>
@@ -14,13 +14,6 @@ export default {
   components: {
     NavBar,
     MainContainer
-  },
-  methods: {
-    increment() {
-      console.log('hello')
-      this.$store.commit('increment')
-      console.log(this.$store.state.count)
-    }
   }
 }
 </script>

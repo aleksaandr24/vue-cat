@@ -9,6 +9,9 @@ export default {
   name: 'App',
   components: {
     TheContainer
+  },
+  mounted() {
+    this.$store.commit('getCatalog')
   }
 }
 </script>
