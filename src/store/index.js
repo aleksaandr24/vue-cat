@@ -5,7 +5,8 @@ export default createStore({
   state() {
     return {
       catalogData: null,
-      navBarMenuCurrentID: 14
+      navBarMenuCurrentName: 'Электроприборы',
+      sideMenuCurrentName: 'Светильники'
     }
   },
   getters: {
@@ -19,7 +20,7 @@ export default createStore({
     getSideMenu: state => {
       let menuItems = []
       for (let key in state.catalogData) {
-        if (state.catalogData[key].id === state.navBarMenuCurrentID) {
+        if (state.catalogData[key].name === state.navBarMenuCurrentName) {
           for (let k in state.catalogData[key].children) {
             menuItems.push(state.catalogData[key].children[k].name)
           }

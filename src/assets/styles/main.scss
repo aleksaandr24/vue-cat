@@ -108,6 +108,10 @@ body {
   }
 }
 
+.navbar__menu-item_current {
+  border-bottom: 4px solid $accent-color;
+}
+
 .navbar__menu-link {
   color: $text-color;
   text-decoration: none;
@@ -166,6 +170,10 @@ body {
   }
 }
 
+.side-menu__link_current {
+  color: $accent-color;
+}
+
 .main-catalog {
   padding: 54px 0 0 36px;
   display: flex;
@@ -177,7 +185,7 @@ body {
   height: 418px;
   min-width: 353px;
   max-width: 353px;
-  margin-right: 33px;
+  margin: 0 33px 33px 0;
   background-color: $components-background-color;
   border-radius: $components-border-radius;
   @include effect-shadow;
