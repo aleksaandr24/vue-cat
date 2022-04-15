@@ -1,15 +1,21 @@
 <template>
   <div class="navbar__menu">
     <ul class="navbar__menu-list">
-      <li class="navbar__menu-item"><a class="navbar__menu-link" href="#">Электроприборы</a></li>
-      <li class="navbar__menu-item"><a class="navbar__menu-link" href="#">Мебель</a></li>
+      <li v-for="(menuItem, index) in navBarMenu" :key="index" class="navbar__menu-item">
+        <a class="navbar__menu-link" href="#">{{ menuItem }}</a>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NavBarMenu'
+  name: 'NavBarMenu',
+  computed: {
+    navBarMenu () {
+      return this.$store.getters.getNavBarMenu
+    }
+  }
 }
 </script>
 

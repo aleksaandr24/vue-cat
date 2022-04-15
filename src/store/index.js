@@ -8,7 +8,13 @@ export default createStore({
     }
   },
   getters: {
-
+    getNavBarMenu: state => {
+      let menuItems = []
+      for (let key in state.catalogData) {
+        menuItems.push(state.catalogData[key].name)
+      }
+      return menuItems
+    }
   },
   mutations: {
     getCatalogJSON(state) {
@@ -22,8 +28,6 @@ export default createStore({
         .get('http://test1.web-gu.ru/')
         .then(response => state.catalogData = createTreeObj(response.data, 'id', 'parent_id', -1))
         .catch(error => console.log(error))
-      state.catalogDataObj = state.jsonCatalogData
-      console.log()
     }
   },
   actions: {
