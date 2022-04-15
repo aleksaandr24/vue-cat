@@ -11,7 +11,7 @@ export default {
     TheContainer
   },
   mounted() {
-    this.$store.commit('getCatalog')
+    this.$store.commit('getCatalogJSON')
   }
 }
 </script>
