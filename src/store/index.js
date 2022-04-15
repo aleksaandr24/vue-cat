@@ -4,7 +4,8 @@ import axios from 'axios'
 export default createStore({
   state() {
     return {
-      catalogData: null
+      catalogData: null,
+      navBarMenuCurrentID: 14
     }
   },
   getters: {
@@ -12,6 +13,17 @@ export default createStore({
       let menuItems = []
       for (let key in state.catalogData) {
         menuItems.push(state.catalogData[key].name)
+      }
+      return menuItems
+    },
+    getSideMenu: state => {
+      let menuItems = []
+      for (let key in state.catalogData) {
+        if (state.catalogData[key].id === state.navBarMenuCurrentID) {
+          for (let k in state.catalogData[key].children) {
+            menuItems.push(state.catalogData[key].children[k].name)
+          }
+        }
       }
       return menuItems
     }

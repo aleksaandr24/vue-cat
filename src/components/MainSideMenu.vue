@@ -1,18 +1,18 @@
 <template>
   <div class="side-menu">
-    <MainSideMenuItem/>
-    <MainSideMenuItem/>
-    <MainSideMenuItem/>
+    <div v-for="(menuItem, index) in sideMenu" :key="index" class="side-menu__item">
+      <a class="side-menu__link" href="#">{{ menuItem }}</a>
+  </div>
   </div>
 </template>
 
 <script>
-import MainSideMenuItem from '@/components/MainSideMenuItem.vue'
-
 export default {
   name: 'MainSideMenu',
-  components: {
-    MainSideMenuItem
+  computed: {
+    sideMenu () {
+      return this.$store.getters.getSideMenu
+    }
   }
 }
 </script>
