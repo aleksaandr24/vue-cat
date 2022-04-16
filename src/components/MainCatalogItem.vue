@@ -1,13 +1,13 @@
 <template>
   <div class="main-catalog__item">
     <div class="item__image">
-      <img src="@/assets/images/item-image.png" width="353" height="246" alt="item_image">
+      <img :src="catalogItem.img" alt="item_image">
     </div>
     <div class="item__name">
-      Стул рабочий
+      {{ catalogItem.name }}
     </div>
     <div class="item__cost">
-      6 000 &#8381;
+      {{ price }}&nbsp;&#8381;
     </div>
     <div class="item__cart-button">
       <button class="cart-button">Добавить в корзину</button>
@@ -17,7 +17,15 @@
 
 <script>
 export default {
-  name: 'MainCatalogItem'
+  name: 'MainCatalogItem',
+  props: {
+    catalogItem: Object
+  },
+  computed: {
+    price() {
+      return this.catalogItem.price.toLocaleString('ru-RU')
+    }
+  }
 }
 </script>
 

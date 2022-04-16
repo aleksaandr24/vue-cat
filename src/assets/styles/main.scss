@@ -195,6 +195,16 @@ body {
   height: 246px;
   width: 100%;
   border-radius: $components-border-radius;
+  border: $components-border;
+  @include flex-vh-center;
+  overflow: hidden;
+}
+
+.item__image img {
+  max-width: none;
+  min-width: auto;
+  min-height: auto;
+  height: 100%;
 }
 
 .item__name {
@@ -229,5 +239,8 @@ body {
   border: none;
   border-radius: 5px;
   @include effect-shadow;
-  @include main-text-bold(18px, 21px, $components-background-color)
+  @include main-text-bold(18px, 21px, $components-background-color);
+  &:hover {
+    cursor: pointer;
+  }
 }

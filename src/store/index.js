@@ -27,6 +27,21 @@ export default createStore({
         }
       }
       return menuItems
+    },
+    getCatalogItems: state => {
+      let catalogItems = []
+      for (let key in state.catalogData) {
+        if (state.catalogData[key].name === state.navBarMenuCurrentName) {
+          for (let k in state.catalogData[key].children) {
+            if (state.catalogData[key].children[k].name === state.sideMenuCurrentName) {
+              for (let j in state.catalogData[key].children[k].children) {
+                catalogItems.push(state.catalogData[key].children[k].children[j])
+              }
+            }
+          }
+        }
+      }
+      return catalogItems
     }
   },
   mutations: {

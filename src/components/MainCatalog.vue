@@ -1,10 +1,6 @@
 <template>
   <div class="main-catalog">
-    <MainCatalogItem/>
-    <MainCatalogItem/>
-    <MainCatalogItem/>
-    <MainCatalogItem/>
-    <MainCatalogItem/>
+    <MainCatalogItem v-for="(catalogItem, index) in catalogItems" :key="index" :catalogItem="catalogItem"/>
   </div>
 </template>
 
@@ -15,6 +11,11 @@ export default {
   name: 'MainCatalog',
   components: {
     MainCatalogItem
+  },
+  computed: {
+    catalogItems () {
+      return this.$store.getters.getCatalogItems
+    }
   }
 }
 </script>
