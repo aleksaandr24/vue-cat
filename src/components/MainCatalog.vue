@@ -1,6 +1,6 @@
 <template>
   <div class="main-catalog">
-    <MainCatalogItem v-for="(catalogItem, index) in catalogItems" :key="index" :catalogItem="catalogItem"/>
+      <MainCatalogItem v-for="(catalogItem, index) in catalogItems" :key="index" :catalogItem="catalogItem"/>
   </div>
 </template>
 

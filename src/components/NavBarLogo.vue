@@ -1,6 +1,6 @@
 <template>
   <div class="navbar__logo">
-    <a href="#">
+    <a href="/">
       <div class="logo-link"></div>
     </a>
   </div>

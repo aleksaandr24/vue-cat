@@ -14,6 +14,7 @@ $components-border: 1px solid #E4E4E4;
 $components-border-radius: 10px;
 $text-color: #424242;
 $accent-color: #FF6969;
+$hover-color: #FC7676;
 $accent-background-text: #FFFFFF;
 
 @mixin effect-shadow {
@@ -80,6 +81,9 @@ body {
   height: 60px;
   flex-basis: 165px;
   background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
+  &:hover {
+    background-color: $hover-color;
+  }
 }
 
 .logo-link {
@@ -104,12 +108,15 @@ body {
   margin-right: 45px;
   padding-top: 20px;
   &:hover {
-    border-bottom: 4px solid $accent-color;
+    border-bottom: 4px solid $hover-color;
   }
 }
 
 .navbar__menu-item_current {
   border-bottom: 4px solid $accent-color;
+  &:hover {
+    border-bottom-color: $hover-color;
+  }
 }
 
 .navbar__menu-link {
@@ -239,8 +246,9 @@ body {
   border: none;
   border-radius: 5px;
   @include effect-shadow;
-  @include main-text-bold(18px, 21px, $components-background-color);
+  @include main-text(18px, 21px, $components-background-color);
   &:hover {
     cursor: pointer;
+    background: $hover-color;
   }
 }
