@@ -5,8 +5,8 @@ export default createStore({
   state() {
     return {
       catalogData: null,
-      navBarMenuCurrentName: 'Электроприборы',
-      sideMenuCurrentName: 'Светильники'
+      navBarMenuCurrentName: null, //'Электроприборы',
+      sideMenuCurrentName: null, //'Светильники'
     }
   },
   getters: {

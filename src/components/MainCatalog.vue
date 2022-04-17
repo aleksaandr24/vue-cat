@@ -1,6 +1,9 @@
 <template>
-  <div class="main-catalog">
+  <div v-if="this.$store.state.navBarMenuCurrentName !== null" class="main-catalog">
       <MainCatalogItem v-for="(catalogItem, index) in catalogItems" :key="index" :catalogItem="catalogItem"/>
+  </div>
+  <div v-else class="main-catalog_empty">
+    <h2>В данной категории товаров пока нет</h2>
   </div>
 </template>
 
