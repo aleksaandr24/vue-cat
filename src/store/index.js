@@ -5,15 +5,15 @@ export default createStore({
   state() {
     return {
       catalogData: null,
-      navBarMenuCurrentName: null, //'Электроприборы',
-      sideMenuCurrentName: null, //'Светильники'
+      navBarMenuCurrentName: 'Электроприборы',
+      sideMenuCurrentName: 'Светильники'
     }
   },
   getters: {
     getNavBarMenu: state => {
       let menuItems = []
       for (let key in state.catalogData) {
-        menuItems.push(state.catalogData[key].name)
+        menuItems.push({id: state.catalogData[key].id, name: state.catalogData[key].name})
       }
       return menuItems
     },

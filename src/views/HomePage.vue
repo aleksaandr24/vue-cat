@@ -6,7 +6,7 @@
 import TheContainer from '@/components/TheContainer.vue'
 
 export default {
-  name: 'MainPage',
+  name: 'HomePage',
   components: {
     TheContainer
   }
