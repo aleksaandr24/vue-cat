@@ -4,9 +4,10 @@ import axios from 'axios'
 export default createStore({
   state() {
     return {
+      dataJsonAPI: 'http://test1.web-gu.ru/',
       catalogData: null,
-      navBarMenuCurrentName: 'Электроприборы',
-      sideMenuCurrentName: 'Светильники'
+      navBarMenuCurrentID: null,
+      sideMenuCurrentID: null
     }
   },
   getters: {
@@ -20,20 +21,20 @@ export default createStore({
     getSideMenu: state => {
       let menuItems = []
       for (let key in state.catalogData) {
-        if (state.catalogData[key].name === state.navBarMenuCurrentName) {
+        if (state.catalogData[key].id === state.navBarMenuCurrentID) {
           for (let k in state.catalogData[key].children) {
-            menuItems.push(state.catalogData[key].children[k].name)
+            menuItems.push({id: state.catalogData[key].children[k].id, name: state.catalogData[key].children[k].name})
           }
         }
       }
       return menuItems
     },
     getCatalogItems: state => {
-      let catalogItems = []
+      let catalogItems = []      
       for (let key in state.catalogData) {
-        if (state.catalogData[key].name === state.navBarMenuCurrentName) {
+        if (state.catalogData[key].id === state.navBarMenuCurrentID) {
           for (let k in state.catalogData[key].children) {
-            if (state.catalogData[key].children[k].name === state.sideMenuCurrentName) {
+            if (state.catalogData[key].children[k].id === state.sideMenuCurrentID) {
               for (let j in state.catalogData[key].children[k].children) {
                 catalogItems.push(state.catalogData[key].children[k].children[j])
               }
@@ -45,7 +46,7 @@ export default createStore({
     }
   },
   mutations: {
-    getCatalogJSON(state) {
+    createCatalogJSON(state) {
       const createTreeObj = (data, idField, parentField, rootParent) => {
         let tree = { [rootParent]: { children: [] } }
         data.forEach(n => tree[n[idField]] = { ...n, children: [] })
@@ -53,12 +54,26 @@ export default createStore({
         return tree[rootParent].children
       }
       axios
-        .get('http://test1.web-gu.ru/')
-        .then(response => state.catalogData = createTreeObj(response.data, 'id', 'parent_id', -1))
+        .get(state.dataJsonAPI)
+        .then(response => {
+          state.catalogData = createTreeObj(response.data, 'id', 'parent_id', -1)
+          state.navBarMenuCurrentID = state.catalogData[0].id
+          state.sideMenuCurrentID = state.catalogData[0].children[0].id
+        })
         .catch(error => console.log(error))
+    },
+    setNavBarMenuCurrentID(state, id) {
+      state.navBarMenuCurrentID = id
+    },
+    setSideMenuCurrentID(state, id) {
+      state.sideMenuCurrentID = id
+    },
+    setDefaultSideMenuCurrentID(state, id) {
+      for (let key in state.catalogData) {
+        if (state.catalogData[key].id === id) {
+          state.sideMenuCurrentID = state.catalogData[key].children[0].id
+        }
+      }
     }
-  },
-  actions: {
-
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.$store.state.navBarMenuCurrentName !== null" class="main-catalog">
+  <div v-if="catalogItems.length > 0" class="main-catalog">
       <MainCatalogItem v-for="(catalogItem, index) in catalogItems" :key="index" :catalogItem="catalogItem"/>
   </div>
   <div v-else class="main-catalog_empty">
@@ -17,6 +17,12 @@ export default {
   },
   computed: {
     catalogItems () {
+      // if (this.$route.params.categoryID !== undefined) {
+      //   this.$store.commit('setNavBarMenuCurrentID', this.$route.params.categoryID)
+      // }
+      // if (this.$route.params.subCategoryID !== undefined) {
+      //   this.$store.commit('setSideMenuCurrentID', this.$route.params.subCategoryID)
+      // }
       return this.$store.getters.getCatalogItems
     }
   }

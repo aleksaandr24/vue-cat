@@ -6,7 +6,7 @@
 export default {
   name: 'App',
   mounted() {
-    this.$store.commit('getCatalogJSON')
+    this.$store.commit('createCatalogJSON')
   }
 }
 </script>
