@@ -7,7 +7,8 @@ export default createStore({
       dataJsonAPI: 'http://test1.web-gu.ru/',
       catalogData: null,
       navBarMenuCurrentID: null,
-      sideMenuCurrentID: null
+      sideMenuCurrentID: null,
+      shopCart: []
     }
   },
   getters: {
@@ -74,6 +75,9 @@ export default createStore({
           state.sideMenuCurrentID = state.catalogData[key].children[0].id
         }
       }
+    },
+    addShopCart(state, catalogItem) {
+      state.shopCart.push(catalogItem)
     }
   }
 })

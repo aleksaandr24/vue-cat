@@ -1,8 +1,8 @@
 <template>
   <div class="navbar__cart">
     <div class="cart__icon">
-      <div class="cart__bubble">
-        15
+      <div v-if="this.$store.state.shopCart.length > 0" class="cart__bubble">
+        {{ this.$store.state.shopCart.length }}
       </div>
     </div>
   </div>
@@ -10,7 +10,12 @@
 
 <script>
 export default {
-
+  name: 'NavBarCart',
+  computed: {
+    cartIndicator() {
+      return true
+    }
+  }
 }
 </script>
 

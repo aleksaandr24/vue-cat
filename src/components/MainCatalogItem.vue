@@ -10,7 +10,8 @@
       {{ price }}&nbsp;&#8381;
     </div>
     <div class="item__cart-button">
-      <button class="cart-button">Добавить в корзину</button>
+      <button v-if="!isInSHopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
+      <button v-else class="cart-button cart-button_in-cart">В корзине</button>
     </div>
   </div>
 </template>
@@ -24,6 +25,19 @@ export default {
   computed: {
     price() {
       return this.catalogItem.price.toLocaleString('ru-RU')
+    }
+  },
+  methods: {
+    addShopCart() {
+      this.$store.commit('addShopCart', this.catalogItem)
+    },
+    isInSHopCart(itemID) {
+      for (let key in this.$store.state.shopCart) {
+        if (this.$store.state.shopCart[key].id === itemID) {
+          return true
+        }
+      }
+      return false
     }
   }
 }
