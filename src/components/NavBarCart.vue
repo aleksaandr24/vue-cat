@@ -12,17 +12,22 @@
       <template #header>
         <h3>Оформить заказ</h3>
       </template>
+      <template #body>
+        <ModalCartBody/>
+      </template>
     </ModalContainer>
   </Teleport>
 </template>
 
 <script>
 import ModalContainer from '@/components/ModalContainer.vue'
+import ModalCartBody from '@/components/ModalCartBody.vue'
 
 export default {
   name: 'NavBarCart',
   components: {
-    ModalContainer
+    ModalContainer,
+    ModalCartBody
   },
   data() {
     return {

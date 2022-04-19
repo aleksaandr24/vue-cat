@@ -1,3 +1,4 @@
+/*=============================== Fonts ===============================*/
 @font-face {
   font-family: 'RobotoRegular';
   src: url('@/assets/fonts/Roboto-Regular.ttf');
@@ -8,6 +9,7 @@
   src: url('@/assets/fonts/Roboto-Bold.ttf');
 }
 
+/*=============================== Variables ===============================*/
 $container-background-color: #E5E5E5;
 $components-background-color: #FFFFFF;
 $components-border: 1px solid #E4E4E4;
@@ -17,23 +19,27 @@ $accent-color: #FF6969;
 $hover-color: #FC7676;
 $accent-background-text: #FFFFFF;
 
+/*=============================== Mixins ===============================*/
 @mixin effect-shadow {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
 }
 
 @mixin main-text($size, $height, $color) {
-  font-family: 'RobotoRegular';
-  font-style: normal;
-  font-weight: 400;
-  font-size: $size;
+  font: {
+    family: 'RobotoRegular';
+    weight: 400;
+    size: $size;
+  }
   line-height: $height;
   color: $color;
 }
 
 @mixin main-text-bold($size, $height, $color) {
-  font-family: 'RobotoBold';
-  font-style: normal;
-  font-size: $size;
+  font: {
+    family: 'RobotoBold';
+    weight: 700;
+    size: $size;
+  }
   line-height: $height;
   color: $color;
 }
@@ -49,6 +55,7 @@ $accent-background-text: #FFFFFF;
   align-items: center;
 }
 
+/*=============================== General ===============================*/
 * {
   margin: 0;
   padding: 0;
@@ -59,6 +66,7 @@ body {
   font-family: 'RobotoRegular', Arial, Helvetica, sans-serif;
 }
 
+/*=============================== Containers ===============================*/
 #app {
   min-height: 100vh;
 }
@@ -68,6 +76,11 @@ body {
   background-color: $container-background-color;
 }
 
+/*=============================== Components Import ===============================*/
+
+@import "modal";
+
+/*=============================== NavBar ===============================*/
 .navbar {
   height: 60px;
   background-color: $components-background-color;
@@ -80,9 +93,9 @@ body {
   height: 60px;
   flex-basis: 165px;
   background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
-  &:hover {
-    background-color: $hover-color;
-  }
+    &:hover {
+      background-color: $hover-color;
+    }
 }
 
 .logo-link {
@@ -106,16 +119,16 @@ body {
 .navbar__menu-item {
   margin-right: 45px;
   padding-top: 20px;
-  &:hover {
-    border-bottom: 4px solid $hover-color;
-  }
+    &:hover {
+      border-bottom: 4px solid $hover-color;
+    }
 }
 
 .navbar__menu-item_current {
   border-bottom: 4px solid $accent-color;
-  &:hover {
-    border-bottom-color: $hover-color;
-  }
+    &:hover {
+      border-bottom-color: $hover-color;
+    }
 }
 
 .navbar__menu-link {
@@ -147,6 +160,8 @@ body {
   @include main-text(11px, 13px, $accent-background-text);
 }
 
+/*=============================== Main ===============================*/
+
 .main-container {
   min-height: 985px;
   display: flex;
@@ -154,6 +169,7 @@ body {
   align-items: stretch;
 }
 
+/*=============================== MainSideMenu ===============================*/
 .side-menu {
   min-width: 325px;
   background-color: $components-background-color;
@@ -171,14 +187,16 @@ body {
 .side-menu__link {
   color: $text-color;
   text-decoration: none;
-  &:hover {
-    color: $accent-color;
-  }
+    &:hover {
+      color: $accent-color;
+    }
 }
 
 .side-menu__link_current {
   color: $accent-color;
 }
+
+/*=============================== MainCatalog ===============================*/
 
 .main-catalog {
   width: 100%;
@@ -193,10 +211,9 @@ body {
   padding: 54px 0 0 36px;
   @include flex-vh-center;
   background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat center 44%;
-}
-
-.main-catalog_empty h2 {
-  @include main-text-bold(24px, 28px, $text-color)
+    h2 {
+      @include main-text-bold(24px, 28px, $text-color)
+    }
 }
 
 .main-catalog__item {
@@ -216,13 +233,12 @@ body {
   border: $components-border;
   @include flex-vh-center;
   overflow: hidden;
-}
-
-.item__image img {
-  max-width: none;
-  min-width: auto;
-  min-height: auto;
-  height: 100%;
+    img {
+      max-width: none;
+      min-width: auto;
+      min-height: auto;
+      height: 100%;
+    }
 }
 
 .item__name {
@@ -258,10 +274,10 @@ body {
   border-radius: 5px;
   @include effect-shadow;
   @include main-text(18px, 21px, $components-background-color);
-  &:hover {
-    cursor: pointer;
-    background-color: $hover-color;
-  }
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
 }
 
 .cart-button_in-cart {
@@ -269,8 +285,8 @@ body {
   padding-left: 24px;
   text-align: left;
   background: $accent-color url('@/assets/images/cart-button_in-cart.svg') no-repeat 85% center;
-  &:hover {
-    cursor: pointer;
-    background-color: $hover-color;
-  }
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
 }
