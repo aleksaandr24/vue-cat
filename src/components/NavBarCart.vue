@@ -6,14 +6,14 @@
       </div>
     </div>
   </div>
-  <Teleport to="body">
-    <!-- use the modal component, pass in the prop -->
+  <Teleport to="#app">
     <ModalContainer :show="showModal" @close="showModal = false">
       <template #header>
         <h3>Оформить заказ</h3>
       </template>
       <template #body>
-        <ModalCartBody/>
+        <ModalCartBody v-if="this.$store.state.shopCart.length > 0"/>
+        <ModalCartBodyEmpty v-else/>
       </template>
     </ModalContainer>
   </Teleport>
@@ -22,12 +22,14 @@
 <script>
 import ModalContainer from '@/components/ModalContainer.vue'
 import ModalCartBody from '@/components/ModalCartBody.vue'
+import ModalCartBodyEmpty from '@/components/ModalCartBodyEmpty.vue'
 
 export default {
   name: 'NavBarCart',
   components: {
     ModalContainer,
-    ModalCartBody
+    ModalCartBody,
+    ModalCartBodyEmpty
   },
   data() {
     return {

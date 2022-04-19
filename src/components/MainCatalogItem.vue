@@ -7,11 +7,11 @@
       {{ catalogItem.name }}
     </div>
     <div class="item__cost">
-      {{ price }}&nbsp;&#8381;
+      {{ catalogItem.price.toLocaleString('ru-RU') }}&nbsp;&#8381;
     </div>
     <div class="item__cart-button">
       <button v-if="!isInSHopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
-      <button v-else class="cart-button cart-button_in-cart">В корзине</button>
+      <button v-else class="cart-button cart-button_in-cart" @click="this.$store.commit('deleteShopCart', catalogItem.id)">В корзине</button>
     </div>
   </div>
 </template>
@@ -21,11 +21,6 @@ export default {
   name: 'MainCatalogItem',
   props: {
     catalogItem: Object
-  },
-  computed: {
-    price() {
-      return this.catalogItem.price.toLocaleString('ru-RU')
-    }
   },
   methods: {
     addShopCart() {

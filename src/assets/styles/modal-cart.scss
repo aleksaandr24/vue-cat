@@ -1,0 +1,42 @@
+.modal-cart-empty__body {
+  height: 100%;
+  width: 100%;
+  @include flex-vh-center;
+  background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat center 30%;
+    & h2 {
+      @include main-text-bold(24px, 28px, $text-color)
+    }
+}
+
+.modal-cart__item {
+  margin: 10px 0px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #EEEEEE;
+  @include flex-v-center;
+  flex-direction: row;
+    & .item__image {
+      height: 97px;
+      width: 138px;
+    }
+}
+
+.item__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    & .item__name {
+      height: 21px;
+    }
+}
+
+.modal-cart__item:last-child {
+  border-bottom: none;
+}
+
+.item__delete button {
+  padding: 10px 0px 0px 29px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include main-text(14px, 16px, $accent-color);
+}

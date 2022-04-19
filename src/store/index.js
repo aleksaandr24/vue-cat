@@ -78,6 +78,14 @@ export default createStore({
     },
     addShopCart(state, catalogItem) {
       state.shopCart.push(catalogItem)
+    },
+    deleteShopCart(state, shopCartItem) {
+      for (let key in state.shopCart) {
+        console.log(state.shopCart[key].id)
+        if (state.shopCart[key].id === shopCartItem) {
+          state.shopCart.splice(key, 1)
+        }
+      }
     }
   }
 })

@@ -78,11 +78,15 @@ body {
 
 /*=============================== Components Import ===============================*/
 
-@import "modal";
+@import "modal", "modal-cart";
 
 /*=============================== NavBar ===============================*/
 .navbar {
   height: 60px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
   background-color: $components-background-color;
   @include effect-shadow;
   display: flex;
@@ -164,6 +168,7 @@ body {
 
 .main-container {
   min-height: 985px;
+  margin-top: 60px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -211,7 +216,7 @@ body {
   padding: 54px 0 0 36px;
   @include flex-vh-center;
   background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat center 44%;
-    h2 {
+    & h2 {
       @include main-text-bold(24px, 28px, $text-color)
     }
 }

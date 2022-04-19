@@ -20,6 +20,7 @@
   width: 633px;
   margin: 0px 0px 0px auto;
   padding: 20px 30px;
+  overflow-y: auto;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
@@ -31,7 +32,7 @@
   flex-direction: row;
   justify-content: space-between;
     & h3 {
-      margin-top: 0;
+      @include main-text-bold(18px, 21px, $text-color);
     }
 }
 
