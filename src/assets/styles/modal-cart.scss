@@ -20,6 +20,10 @@
     }
 }
 
+.modal-cart__item_last {
+  border-bottom: none;
+}
+
 .item__info {
   display: flex;
   flex-direction: column;
@@ -29,14 +33,60 @@
     }
 }
 
-.modal-cart__item:last-child {
-  border-bottom: none;
-}
-
 .item__delete button {
   padding: 10px 0px 0px 29px;
   background: none;
   border: none;
   cursor: pointer;
   @include main-text(14px, 16px, $accent-color);
+}
+
+.order-form {
+  margin-top: 50px;
+  @include main-text(16px, 19px, $text-color);
+}
+
+.order-form__input {
+  height: 41px;
+  width: 100%;
+  margin: 10px 0px;
+  padding-left: 10px;
+  border: 1px solid #898989;
+  box-sizing: border-box;
+  border-radius: 5px;
+  @include main-text(16px, 19px, $text-color);
+}
+
+.order-form__input_error {
+  margin-bottom: 0px;
+  border-color: $accent-color;
+}
+
+.order-form__error {
+  @include main-text(14px, 16px, $accent-color);
+}
+
+.order-form__name {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+    & div {
+      flex-basis: 48%;
+    }
+}
+
+.order-form__button button {
+  height: 40px;
+  width: 219px;
+  margin-top: 30px;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 5px;
+  @include effect-shadow;
+  @include main-text(18px, 21px, $components-background-color);
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
 }
