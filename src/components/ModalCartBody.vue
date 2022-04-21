@@ -40,7 +40,7 @@
       </div>
       <div class="order-form__address">
         <label for="orderFormAddress">Полный адрес</label><br>
-        <input type="text" v-model.trim="orderFormAddress" placeholder="Ул. Пушкина, дом 25, квартира 1" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
+        <input type="text" v-model.trim="orderFormAddress" placeholder="Ул. Пушкина, дом" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
         <span v-if="v$.orderFormAddress.$invalid" class="order-form__error">
           {{ v$.orderFormAddress.required.$message }}
         </span>
@@ -55,6 +55,7 @@
 <script>
 import useVuelidate from '@vuelidate/core'
 import { required, helpers } from '@vuelidate/validators'
+import axios from 'axios'
 
 export default {
   name: 'ModalCartBody',
@@ -86,7 +87,23 @@ export default {
       if (!this.v$.orderFormName.$invalid &&
         !this.v$.orderFormPhone.$invalid &&
         !this.v$.orderFormAddress.$invalid) {
-          alert('заказ создан')
+          let orderFormData = {
+            orderFormName: this.orderFormName,
+            orderFormPhone: this.orderFormPhone,
+            orderFormAddress: this.orderFormAddress
+          }
+          axios({
+            method: 'get',
+            url: 'http://test1.web-gu.ru/?action=send_form',
+            params: orderFormData,
+            headers: {'Content-Type': 'application/json; charset=UTF-8' }
+            })
+          .then(response => {
+            this.$store.commit('changeShopOrdered', response.data.result)
+          })
+          .catch(error => {
+            console.log(error);
+          })
       }
     }
   }

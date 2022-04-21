@@ -90,3 +90,13 @@
       background-color: $hover-color;
     }
 }
+
+.modal-cart-ordered__body {
+  height: 100%;
+  width: 100%;
+  @include flex-vh-center;
+  background: url('@/assets/images/modal__ordered.svg') no-repeat center 30%;
+    & h2 {
+      @include main-text-bold(24px, 28px, $text-color)
+    }
+}

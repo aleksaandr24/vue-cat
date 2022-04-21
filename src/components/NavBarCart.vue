@@ -7,12 +7,13 @@
     </div>
   </div>
   <Teleport to="#app">
-    <ModalContainer :show="showModal" @close="showModal = false">
+    <ModalContainer :show="showModal" @close="showModal = false; this.$store.commit('defaultShopCart')">
       <template #header>
         <h3>Оформить заказ</h3>
       </template>
       <template #body>
-        <ModalCartBody v-if="this.$store.state.shopCart.length > 0"/>
+        <ModalCartBodyOrdered v-if="this.$store.state.shopOrdered"/>
+        <ModalCartBody v-else-if="this.$store.state.shopCart.length > 0"/>
         <ModalCartBodyEmpty v-else/>
       </template>
     </ModalContainer>
@@ -23,13 +24,15 @@
 import ModalContainer from '@/components/ModalContainer.vue'
 import ModalCartBody from '@/components/ModalCartBody.vue'
 import ModalCartBodyEmpty from '@/components/ModalCartBodyEmpty.vue'
+import ModalCartBodyOrdered from '@/components/ModalCartBodyOrdered.vue'
 
 export default {
   name: 'NavBarCart',
   components: {
     ModalContainer,
     ModalCartBody,
-    ModalCartBodyEmpty
+    ModalCartBodyEmpty,
+    ModalCartBodyOrdered
   },
   data() {
     return {

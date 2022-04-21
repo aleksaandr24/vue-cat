@@ -8,7 +8,8 @@ export default createStore({
       catalogData: null,
       navBarMenuCurrentID: null,
       sideMenuCurrentID: null,
-      shopCart: []
+      shopCart: [],
+      shopOrdered: false
     }
   },
   getters: {
@@ -86,6 +87,13 @@ export default createStore({
           state.shopCart.splice(key, 1)
         }
       }
+    },
+    changeShopOrdered(state, flag) {
+      state.shopOrdered = flag
+    },
+    defaultShopCart(state) {
+      state.shopCart = []
+      state.shopOrdered = false
     }
   }
 })
