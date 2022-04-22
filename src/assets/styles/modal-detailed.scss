@@ -1,0 +1,88 @@
+.modal-detailed__item-image {
+  height: 341px;
+  width: 565px;
+  border-radius: $components-border-radius;
+  border: $components-border;
+  @include flex-vh-center;
+  overflow: hidden;
+    img {
+      max-width: none;
+      min-width: auto;
+      min-height: auto;
+      height: 100%;
+    }
+}
+
+.modal-detailed__item-name {
+  height: 44px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 500;
+  @include main-text(18px, 21px, $text-color)
+}
+
+.modal-detailed__item-price {
+  height: 30px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 700;
+  @include main-text-bold(18px, 21px, $text-color)
+}
+
+.modal-detailed__item-tabs-wrapper {
+  margin-top: 30px;
+}
+
+.item-tabs__panels {
+  padding-top: 10px;
+}
+
+.item-tabs__nav {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.item-tabs__item {
+  margin-right: 30px;
+  border-bottom: 3px solid #E4E2E2;
+}
+
+.item-tabs__item_active {
+  border-bottom: 3px solid $accent-color;
+}
+
+.item-tabs__link {
+  @include main-text(16px, 19px, $text-color);
+  text-decoration: none;
+}
+
+.item_description {
+  @include main-text(16px, 19px, $text-color);
+}
+
+.item_properties {
+  padding-top: 20px;
+}
+
+.item_properties__row {
+  height: 36px;
+  width: 100%;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f3f3f3;
+  @include main-text(16px, 19px, $text-color);
+    & div {
+      @include flex-v-center
+    }
+}
+
+.item_properties__row:nth-child(even) {
+  background-color: #fff;
+}
+
+.item_properties__row-value {
+  color: #979494
+}

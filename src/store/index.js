@@ -8,6 +8,8 @@ export default createStore({
       catalogData: null,
       navBarMenuCurrentID: null,
       sideMenuCurrentID: null,
+      modalDetailedCurrentID: null,
+      modalDetailedCurrentItem: null,
       shopCart: [],
       shopOrdered: false
     }
@@ -94,6 +96,18 @@ export default createStore({
     defaultShopCart(state) {
       state.shopCart = []
       state.shopOrdered = false
+    },
+    setModalDetailedCurrentID(state, itemID) {
+      state.modalDetailedCurrentID = itemID
+    },
+    getModalDetailedCurrentItem(state) {
+      let path = 'http://test1.web-gu.ru/?action=show_product&id=' + state.modalDetailedCurrentID
+      axios
+        .get(path)
+        .then(response => { 
+          state.modalDetailedCurrentItem = response.data
+        })
+        .catch(error => console.log(error))
     }
   }
 })

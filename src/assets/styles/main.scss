@@ -78,7 +78,7 @@ body {
 
 /*=============================== Components Import ===============================*/
 
-@import "modal", "modal-cart";
+@import "modal", "modal-cart", "modal-detailed";
 
 /*=============================== NavBar ===============================*/
 .navbar {
@@ -236,6 +236,7 @@ body {
   width: 100%;
   border-radius: $components-border-radius;
   border: $components-border;
+  cursor: pointer;
   @include flex-vh-center;
   overflow: hidden;
     img {
@@ -252,6 +253,7 @@ body {
   display: flex;
   align-items: flex-end;
   font-weight: 500;
+  cursor: pointer;
   @include main-text(18px, 21px, $text-color)
 }
 

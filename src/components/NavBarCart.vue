@@ -7,7 +7,7 @@
     </div>
   </div>
   <Teleport to="#app">
-    <ModalContainer :show="showModal" @close="showModal = false; this.$store.commit('defaultShopCart')">
+    <ModalContainer :show="showModal" @close="showModal = false">
       <template #header>
         <h3>Оформить заказ</h3>
       </template>
