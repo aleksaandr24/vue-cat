@@ -1,20 +1,13 @@
 <template>
   <div class="main-container">
-    <MainSideMenu/>
-    <MainCatalog/>
+    <router-view name="sidemenu"/>
+    <router-view name="main"/>
   </div>
 </template>
 
 <script>
-import MainSideMenu from '@/components/MainSideMenu.vue'
-import MainCatalog from '@/components/MainCatalog.vue'
-
 export default {
-  name: 'MainContainer',
-  components: {
-    MainSideMenu,
-    MainCatalog
-  }
+  name: 'MainContainer'
 }
 </script>
 

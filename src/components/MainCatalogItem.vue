@@ -4,14 +4,14 @@
       <img :src="catalogItem.img" alt="item_image">
     </div>
     <div class="item__name" @click="setStateCurrentItem">
-      {{ catalogItem.name }}
+      <button tabindex="20">{{ catalogItem.name }}</button>
     </div>
     <div class="item__cost">
       {{ catalogItem.price.toLocaleString('ru-RU') }}&nbsp;&#8381;
     </div>
     <div class="item__cart-button">
-      <button v-if="!isInSHopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
-      <button v-else class="cart-button cart-button_in-cart" @click="this.$store.commit('deleteShopCart', catalogItem.id)">В корзине</button>
+      <button tabindex="21" v-if="!isInSHopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
+      <button tabindex="21" v-else class="cart-button cart-button_in-cart" @click="this.$store.commit('deleteShopCart', catalogItem.id)">В корзине</button>
     </div>
   </div>
   <Teleport to="#app">

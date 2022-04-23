@@ -1,13 +1,13 @@
 <template>
   <div class="navbar__cart">
-    <div id="show-modal" @click="showModal = true" class="cart__icon">
+    <button id="show-modal" @click="showModal = true" tabindex="10" class="cart__icon">
       <div v-if="this.$store.state.shopCart.length > 0" class="cart__bubble">
         {{ this.$store.state.shopCart.length }}
       </div>
-    </div>
+    </button>
   </div>
   <Teleport to="#app">
-    <ModalContainer :show="showModal" @close="showModal = false">
+    <ModalContainer :show="showModal" @close="showModal = false; this.$store.commit('changeShopOrdered', false)">
       <template #header>
         <h3>Оформить заказ</h3>
       </template>

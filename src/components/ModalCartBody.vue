@@ -45,8 +45,8 @@
           {{ v$.orderFormAddress.required.$message }}
         </span>
       </div>
-      <div>
-        <button class="order-form__button" type="submit">Заказать</button>
+      <div class="order-form__button">
+        <button type="submit">Заказать</button>
       </div>
     </form>
   </div>
@@ -99,7 +99,12 @@ export default {
             headers: {'Content-Type': 'application/json; charset=UTF-8' }
             })
           .then(response => {
-            this.$store.commit('changeShopOrdered', response.data.result)
+            if (response.data.result) {
+              this.$store.commit('changeShopOrdered', true)
+            }
+            else {
+              console.log('Making order error:')
+            }            
           })
           .catch(error => {
             console.log(error);

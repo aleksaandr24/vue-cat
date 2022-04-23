@@ -1,0 +1,25 @@
+.side-menu {
+  min-width: 325px;
+  background-color: $components-background-color;
+  @include effect-shadow;
+}
+
+.side-menu__item {
+  height: 34px;
+  margin-top: 19px;
+  padding-left: 29px;
+  border-bottom: $components-border;
+  @include main-text(16px, 19px, $text-color)
+}
+
+.side-menu__link {
+  color: $text-color;
+  text-decoration: none;
+    &:hover {
+      color: $accent-color;
+    }
+}
+
+.side-menu__link_current {
+  color: $accent-color;
+}

@@ -17,12 +17,6 @@ export default {
   },
   computed: {
     catalogItems () {
-      // if (this.$route.params.categoryID !== undefined) {
-      //   this.$store.commit('setNavBarMenuCurrentID', this.$route.params.categoryID)
-      // }
-      // if (this.$route.params.subCategoryID !== undefined) {
-      //   this.$store.commit('setSideMenuCurrentID', this.$route.params.subCategoryID)
-      // }
       return this.$store.getters.getCatalogItems
     }
   }

@@ -62,238 +62,24 @@ $accent-background-text: #FFFFFF;
 }
 
 body {
-  min-height: 100vh;
+  
   font-family: 'RobotoRegular', Arial, Helvetica, sans-serif;
 }
 
 /*=============================== Containers ===============================*/
-#app {
-  min-height: 100vh;
-}
-
 .container {
-  min-height: 100vh;
   background-color: $container-background-color;
 }
 
-/*=============================== Components Import ===============================*/
-
-@import "modal", "modal-cart", "modal-detailed";
-
-/*=============================== NavBar ===============================*/
-.navbar {
-  height: 60px;
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  background-color: $components-background-color;
-  @include effect-shadow;
-  display: flex;
-  flex-direction: row;
-}
-
-.navbar__logo {
-  height: 60px;
-  flex-basis: 165px;
-  background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
-    &:hover {
-      background-color: $hover-color;
-    }
-}
-
-.logo-link {
-  height: 100%;
-  width: 100%;
-}
-
-.navbar__menu {
-  flex-grow: 1;
-}
-
-.navbar__menu-list {
-  height: 60px;
-  padding-left: 24px;
-  list-style-type: none;
-  @include main-text(18px, 21px, $text-color);
-  display: flex;
-  flex-direction: row;
-}
-
-.navbar__menu-item {
-  margin-right: 45px;
-  padding-top: 20px;
-    &:hover {
-      border-bottom: 4px solid $hover-color;
-    }
-}
-
-.navbar__menu-item_current {
-  border-bottom: 4px solid $accent-color;
-    &:hover {
-      border-bottom-color: $hover-color;
-    }
-}
-
-.navbar__menu-link {
-  color: $text-color;
-  text-decoration: none;
-}
-
-.navbar__cart {
-  height: 100%;
-  flex-basis: 49px;
-  @include flex-v-center;
-}
-
-.cart__icon {
-  height: 21px;
-  width: 21px;
-  background: url('@/assets/images/navbar__cart-icon.svg') no-repeat;
-  cursor: pointer;
-}
-
-.cart__bubble {
-  height: 18px;
-  width: 18px;
-  position: relative;
-  top: -8px;
-  left: 10px;
-  background: url('@/assets/images/navbar__ellipse-icon.svg') no-repeat;
-  @include flex-vh-center;
-  @include main-text(11px, 13px, $accent-background-text);
-}
-
-/*=============================== Main ===============================*/
-
 .main-container {
-  min-height: 985px;
+  height: 100vh;
   margin-top: 60px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
 
-/*=============================== MainSideMenu ===============================*/
-.side-menu {
-  min-width: 325px;
-  background-color: $components-background-color;
-  @include effect-shadow;
-}
+/*=============================== Components Import ===============================*/
 
-.side-menu__item {
-  height: 34px;
-  margin-top: 19px;
-  padding-left: 29px;
-  border-bottom: $components-border;
-  @include main-text(16px, 19px, $text-color)
-}
-
-.side-menu__link {
-  color: $text-color;
-  text-decoration: none;
-    &:hover {
-      color: $accent-color;
-    }
-}
-
-.side-menu__link_current {
-  color: $accent-color;
-}
-
-/*=============================== MainCatalog ===============================*/
-
-.main-catalog {
-  width: 100%;
-  padding: 54px 0 0 36px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;  
-}
-
-.main-catalog_empty {
-  width: 100%;
-  padding: 54px 0 0 36px;
-  @include flex-vh-center;
-  background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat center 44%;
-    & h2 {
-      @include main-text-bold(24px, 28px, $text-color)
-    }
-}
-
-.main-catalog__item {
-  height: 418px;
-  min-width: 353px;
-  max-width: 353px;
-  margin: 0 30px 33px 0;
-  background-color: $components-background-color;
-  border-radius: $components-border-radius;
-  @include effect-shadow;
-}
-
-.item__image {
-  height: 246px;
-  width: 100%;
-  border-radius: $components-border-radius;
-  border: $components-border;
-  cursor: pointer;
-  @include flex-vh-center;
-  overflow: hidden;
-    img {
-      max-width: none;
-      min-width: auto;
-      min-height: auto;
-      height: 100%;
-    }
-}
-
-.item__name {
-  height: 44px;
-  padding-left: 29px;
-  display: flex;
-  align-items: flex-end;
-  font-weight: 500;
-  cursor: pointer;
-  @include main-text(18px, 21px, $text-color)
-}
-
-.item__cost {
-  height: 30px;
-  padding-left: 29px;
-  display: flex;
-  align-items: flex-end;
-  font-weight: 700;
-  @include main-text-bold(18px, 21px, $text-color)
-}
-
-.item__cart-button {
-  height: 72px;
-  padding-left: 29px;
-  display: flex;
-  align-items: flex-end;
-}
-
-.cart-button {
-  height: 40px;
-  width: 219px;
-  background-color: $accent-color;
-  border: none;
-  border-radius: 5px;
-  @include effect-shadow;
-  @include main-text(18px, 21px, $components-background-color);
-    &:hover {
-      cursor: pointer;
-      background-color: $hover-color;
-    }
-}
-
-.cart-button_in-cart {
-  width: 169px;
-  padding-left: 24px;
-  text-align: left;
-  background: $accent-color url('@/assets/images/cart-button_in-cart.svg') no-repeat 85% center;
-    &:hover {
-      cursor: pointer;
-      background-color: $hover-color;
-    }
-}
+@import "not-found", "nav-bar", "main-side-menu", "main-catalog",
+        "modal", "modal-cart", "modal-detailed";

@@ -1,0 +1,98 @@
+.main-catalog {
+  width: 100%;
+  padding: 54px 0 0 36px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
+
+.main-catalog_empty {
+  width: 100%;
+  @include flex-vh-center;
+  background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat 47% 49%;
+    & h2 {
+      padding: 212px 115px 0px 0px;
+      @include main-text-bold(24px, 28px, $text-color)
+    }
+}
+
+.main-catalog__item {
+  height: 418px;
+  min-width: 353px;
+  max-width: 353px;
+  margin: 0 36px 33px 0;
+  background-color: $components-background-color;
+  border-radius: $components-border-radius;
+  @include effect-shadow;
+}
+
+.item__image {
+  height: 246px;
+  width: 100%;
+  border-radius: $components-border-radius;
+  border: $components-border;
+  cursor: pointer;
+  @include flex-vh-center;
+  overflow: hidden;
+    img {
+      max-width: none;
+      min-width: auto;
+      min-height: auto;
+      height: 100%;
+    }
+}
+
+.item__name {
+  height: 44px;
+  padding-left: 29px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 500;
+    & button {
+      border: none;
+      background: none;
+      @include main-text(18px, 21px, $text-color);
+      cursor: pointer;
+    }
+}
+
+.item__cost {
+  height: 30px;
+  padding-left: 29px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 700;
+  @include main-text-bold(18px, 21px, $text-color);
+}
+
+.item__cart-button {
+  height: 72px;
+  padding-left: 29px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cart-button {
+  height: 40px;
+  width: 219px;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 5px;
+  @include effect-shadow;
+  @include main-text(18px, 21px, $components-background-color);
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+}
+
+.cart-button_in-cart {
+  width: 169px;
+  padding-left: 24px;
+  text-align: left;
+  background: $accent-color url('@/assets/images/cart-button_in-cart.svg') no-repeat 85% center;
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+}

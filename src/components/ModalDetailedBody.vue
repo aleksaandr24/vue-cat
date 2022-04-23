@@ -19,22 +19,25 @@
       </div>
     </Tab>
     <Tab id="item_reviews" name="Отзывы">
-      <div v-for="(prop, index) in catalogItemFull.reviews.slice().reverse()" :key="index" class="item_reviews__row">
-        <div class="item_reviews__avatar">
-          <img :src="prop.avatar" alt="avatar">
-        </div>
-        <div>
-          <div class="item_reviews__author">
-            <div class="item_reviews__author-name">{{ prop.author }}</div>
-            <div class="item_reviews__author-rate">
-              <ReviewRating :rate="prop.rate"/>
-            </div>
+      <div v-if="catalogItemFull.reviews.length > 0">
+        <div v-for="(prop, index) in catalogItemFull.reviews.slice().reverse()" :key="index" class="item_reviews__row">
+          <div class="item_reviews__avatar">
+            <img :src="prop.avatar" alt="avatar">
           </div>
-          <div class="item_reviews__text">
-            {{ prop.text }}
+          <div>
+            <div class="item_reviews__author">
+              <div class="item_reviews__author-name">{{ prop.author }}</div>
+              <div class="item_reviews__author-rate">
+                <ReviewRating :rate="prop.rate"/>
+              </div>
+            </div>
+            <div class="item_reviews__text">
+              {{ prop.text }}
+            </div>
           </div>
         </div>
       </div>
+      <div v-else class="item_reviews__author-name">Отзывов нет</div>
     </Tab>
     <Tab id="item_feedback-review" name="Оставить отзыв">
       <div v-if="!reviewSended">

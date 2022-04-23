@@ -1,20 +1,64 @@
-import HomePage from '@/views/HomePage.vue'
-// import DefaultSubCategoryPage from '@/views/DefaultSubCategoryPage.vue'
-// import CurrentSubCategoryPage from '@/views/CurrentSubCategoryPage.vue'
+import CatalogPage from '@/views/CatalogPage.vue'
+import NotFoundPage from '@/views/NotFoundPage.vue'
+import NavBarMenu from '@/components/NavBarMenu.vue'
+import MainSideMenu from '@/components/MainSideMenu.vue'
+import MainCatalog from '@/components/MainCatalog.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
     path: '/',
-    component: HomePage
+    name: 'home',
+    redirect: '/catalog'
   },
   {
-    path: '/category/:categoryID',
-    component: HomePage
+    path: '/catalog',
+    name: 'catalog',
+    components: {
+      default: CatalogPage,
+      navbar: NavBarMenu,
+      sidemenu: MainSideMenu,
+      main: MainCatalog
+    },
+    props: {
+      navbar: true,
+      sidemenu: true,
+      main: true
+    },
+    children: [
+      {
+        path: ':categoryID',
+        components: {
+          navbar: NavBarMenu,
+          sidemenu: MainSideMenu,
+          main: MainCatalog
+        },
+        props: {
+          navbar: true,
+          sidemenu: true,
+          main: true
+        },
+        children: [
+          {
+            path: ':subCategoryID',
+            components: {
+              navbar: NavBarMenu,
+              sidemenu: MainSideMenu,
+              main: MainCatalog
+            },
+            props: {
+              navbar: true,
+              sidemenu: true,
+              main: true
+            }
+          }
+        ]
+      }
+    ]
   },
   {
-    path: '/category/:categoryID/subcategory/:subCategoryID',
-    component: HomePage
+    path: '/:pathMatch(.*)*',
+    component: NotFoundPage
   }
 ]
 
