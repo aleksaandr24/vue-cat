@@ -24,29 +24,29 @@
     <form @submit.prevent="makeOrder" class="order-form">
       <div class="order-form__name">
         <div>
-          <label for="orderFormName">Имя</label><br>
-          <input type="text" v-model.trim="orderFormName" placeholder="Имя" :class="v$.orderFormName.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
+          <label for="order-name">Имя</label><br>
+          <input type="text" id="order-name" v-model.trim="orderFormName" placeholder="Имя" :class="v$.orderFormName.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
           <span v-if="v$.orderFormName.$invalid" class="order-form__error">
             {{ v$.orderFormName.required.$message }}
           </span>
         </div>
         <div>
-          <label for="orderFormPhone">Телефон</label><br>
-          <input type="text" v-model.trim="orderFormPhone" placeholder="+7 (950) 45-84-345" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
+          <label for="order-phone">Телефон</label><br>
+          <input type="text" id="order-phone" v-model.trim="orderFormPhone" placeholder="+7 (950) 45-84-345" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
           <span v-if="v$.orderFormPhone.$invalid" class="order-form__error">
             {{ v$.orderFormPhone.required.$message }}
           </span>
         </div>
       </div>
       <div class="order-form__address">
-        <label for="orderFormAddress">Полный адрес</label><br>
-        <input type="text" v-model.trim="orderFormAddress" placeholder="Ул. Пушкина, дом" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
+        <label for="order-address">Полный адрес</label><br>
+        <input type="text" id="order-address" v-model.trim="orderFormAddress" placeholder="Ул. Пушкина, дом" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
         <span v-if="v$.orderFormAddress.$invalid" class="order-form__error">
           {{ v$.orderFormAddress.required.$message }}
         </span>
       </div>
-      <div class="order-form__button">
-        <button type="submit">Заказать</button>
+      <div>
+        <button class="order-form__button" type="submit">Заказать</button>
       </div>
     </form>
   </div>

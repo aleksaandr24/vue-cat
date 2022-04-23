@@ -86,3 +86,153 @@
 .item_properties__row-value {
   color: #979494
 }
+
+.item_reviews__row {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.item_reviews__avatar {
+  padding: 10px;
+  & img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+}
+
+.item_reviews__author {
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item_reviews__author-name {
+  @include main-text(16px, 19px, #000000);
+}
+
+.rate-image {
+  height: 18px;
+  width: 19px;
+  margin: 0px 2px;
+}
+
+.item_reviews__text {
+  width: 502px;
+  padding: 13px 19px 5px 14px;
+  background-color: #F3F3F3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 7px;
+  @include main-text(14px, 16px, $text-color);
+}
+
+.review-form__rate {
+  margin: 20px 0px 10px 0px;
+  @include main-text(16px, 19px, #000000);
+}
+
+.rating-area {
+	height: 19px;
+  width: 105px;
+  margin: 0px 0px 20px 0px;
+  overflow: hidden;
+}
+
+.rating-area:not(:checked) > input {
+	display: none;
+}
+
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 19px;
+	margin-left: 2px;
+  padding: 0px;
+	cursor: pointer;
+}
+
+.rating-area:not(:checked) > label:before {
+	content: url('@/assets/images/reviews__star_gray.svg');
+}
+
+.rating-area > input:checked ~ label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+	
+}
+
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+}
+
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+}
+
+.rate-area > label:active {
+	position: relative;
+}
+
+.review-form__name, .review-form__text {
+  @include main-text(16px, 19px, #000000);
+}
+
+.review-form__input {
+  height: 41px;
+  width: 100%;
+  margin: 10px 0px;
+  padding-left: 10px;
+  border: 1px solid #898989;
+  box-sizing: border-box;
+  border-radius: 5px;
+  @include main-text(16px, 19px, $text-color);
+}
+
+.review-form__input_error {
+  margin-bottom: 0px;
+  border-color: $accent-color;
+}
+
+.review-form__textarea {
+  width: 100%;
+  margin: 10px 0px;
+  padding: 10px 0px 0px 10px;
+  border: 1px solid #898989;
+  box-sizing: border-box;
+  border-radius: 5px;
+  @include main-text(16px, 19px, $text-color);
+}
+
+.review-form__textarea_error {
+  margin-bottom: 0px;
+  border-color: $accent-color;
+}
+
+.review-form__error {
+  margin-bottom: 20px;
+  @include main-text(14px, 16px, $accent-color);
+}
+
+.review-form__button {
+  height: 100px;
+  & button {
+    height: 40px;
+    width: 219px;
+    margin-top: 30px;
+    background-color: $accent-color;
+    border: none;
+    border-radius: 5px;
+    @include effect-shadow;
+    @include main-text(18px, 21px, $components-background-color);
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+  }
+}
