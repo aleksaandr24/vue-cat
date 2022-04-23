@@ -108,6 +108,9 @@ export default createStore({
           state.modalDetailedCurrentItem = response.data
         })
         .catch(error => console.log(error))
+    },
+    addtModalDetailedCurrentItemReview(state, review) {
+      state.modalDetailedCurrentItem.reviews.push(review)
     }
   }
 })

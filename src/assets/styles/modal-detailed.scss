@@ -89,7 +89,7 @@
 
 .item_reviews__row {
   width: 100%;
-  margin-bottom: 30px;
+  padding: 20px 0px;
   display: flex;
   flex-direction: row;
 }
@@ -235,4 +235,15 @@
       background-color: $hover-color;
     }
   }
+}
+
+.review-form__recieve {
+  height: 350px;
+  width: 100%;
+  @include flex-vh-center;
+  background: url('@/assets/images/modal__ordered.svg') no-repeat center 25%;
+  background-size: 15%;
+    & h2 {
+      @include main-text-bold(24px, 28px, $text-color)
+    }
 }
