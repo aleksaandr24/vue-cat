@@ -1,8 +1,5 @@
 import CatalogPage from '@/views/CatalogPage.vue'
 import NotFoundPage from '@/views/NotFoundPage.vue'
-import NavBarMenu from '@/components/NavBarMenu.vue'
-import MainSideMenu from '@/components/MainSideMenu.vue'
-import MainCatalog from '@/components/MainCatalog.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -14,43 +11,17 @@ const routes = [
   {
     path: '/catalog',
     name: 'catalog',
-    components: {
-      default: CatalogPage,
-      navbar: NavBarMenu,
-      sidemenu: MainSideMenu,
-      main: MainCatalog
-    },
-    props: {
-      navbar: true,
-      sidemenu: true,
-      main: true
-    },
+    component: CatalogPage,
     children: [
       {
         path: ':categoryID',
-        components: {
-          navbar: NavBarMenu,
-          sidemenu: MainSideMenu,
-          main: MainCatalog
-        },
-        props: {
-          navbar: true,
-          sidemenu: true,
-          main: true
-        },
+        name: 'catalogCategory',
+        component: CatalogPage,
         children: [
           {
             path: ':subCategoryID',
-            components: {
-              navbar: NavBarMenu,
-              sidemenu: MainSideMenu,
-              main: MainCatalog
-            },
-            props: {
-              navbar: true,
-              sidemenu: true,
-              main: true
-            }
+            name: 'catalogSubCategory',
+            component: CatalogPage
           }
         ]
       }

@@ -5,8 +5,8 @@ export default createStore({
   
   state() {
     return {
-      
       dataJsonAPI: 'http://test1.web-gu.ru/',
+      currentDataJsonAPI: 'http://test1.web-gu.ru/?action=show_product&id=',
       catalogData: null,
       navBarMenuCurrentID: null,
       sideMenuCurrentID: null,
@@ -14,12 +14,10 @@ export default createStore({
       modalDetailedCurrentItem: null,
       shopCart: [],
       shopOrdered: false
-
     }
   },
   
   getters: {
-    
     getNavBarMenu: state => {
       let menuItems = []
       for (let key in state.catalogData) {
@@ -42,8 +40,6 @@ export default createStore({
     
     getCatalogItems: state => {
       let catalogItems = []      
-      console.log('state.navBarMenuCurrentID:', state.navBarMenuCurrentID)
-      console.log('state.sideMenuCurrentID:', state.sideMenuCurrentID)
       for (let key in state.catalogData) {
         if (state.catalogData[key].id === state.navBarMenuCurrentID) {
           for (let k in state.catalogData[key].children) {
@@ -55,13 +51,23 @@ export default createStore({
           }
         }
       }
-      console.log('Catalog Items get:', catalogItems)
       return catalogItems
+    },
+
+    getDefaultNavBarCurrentID: state => {
+      return state.catalogData[0].id
+    },
+
+    getDefaultSideMenuCurrentID: state => {
+      for (let key in state.catalogData) {
+        if (state.catalogData[key].id === state.navBarMenuCurrentID) {
+          return state.catalogData[key].children[0].id
+        }
+      }
     }
   },
   
   mutations: {
-    
     createCatalogJSON(state) {
       const createTreeObj = (data, idField, parentField, rootParent) => {
         let tree = { [rootParent]: { children: [] } }
@@ -73,29 +79,18 @@ export default createStore({
         .get(state.dataJsonAPI)
         .then(response => {
           state.catalogData = createTreeObj(response.data, 'id', 'parent_id', -1)
-          // state.navBarMenuCurrentID = state.catalogData[0].id
-          // state.sideMenuCurrentID = state.catalogData[0].children[0].id
-          console.log('Catalog created', state.catalogData)
+          state.navBarMenuCurrentID = state.catalogData[0].id
+          state.sideMenuCurrentID = state.catalogData[0].children[0].id
         })
         .catch(error => console.log(error))
     },
     
     setNavBarMenuCurrentID(state, id) {
       state.navBarMenuCurrentID = id
-      console.log('NavBarMenuCurrentID set', id, state.navBarMenuCurrentID)
     },
     
     setSideMenuCurrentID(state, id) {
       state.sideMenuCurrentID = id
-      console.log('SideMenuCurrentID set', id, state.sideMenuCurrentID)
-    },
-    
-    setDefaultSideMenuCurrentID(state, id) {
-      for (let key in state.catalogData) {
-        if (state.catalogData[key].id === id) {
-          state.sideMenuCurrentID = state.catalogData[key].children[0].id
-        }
-      }
     },
     
     addShopCart(state, catalogItem) {
@@ -123,7 +118,7 @@ export default createStore({
     },
     
     getModalDetailedCurrentItem(state) {
-      let path = 'http://test1.web-gu.ru/?action=show_product&id=' + state.modalDetailedCurrentID
+      let path = state.currentDataJsonAPI + state.modalDetailedCurrentID
       axios
         .get(path)
         .then(response => { 

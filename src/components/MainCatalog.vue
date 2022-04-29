@@ -12,9 +12,11 @@ import MainCatalogItem from '@/components/MainCatalogItem.vue'
 
 export default {
   name: 'MainCatalog',
+  
   components: {
     MainCatalogItem
   },
+  
   computed: {
     catalogItems () {
       return this.$store.getters.getCatalogItems
@@ -22,7 +24,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

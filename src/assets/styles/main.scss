@@ -68,11 +68,12 @@ body {
 
 /*=============================== Containers ===============================*/
 .container {
+  min-height: 100vh;
   background-color: $container-background-color;
 }
 
 .main-container {
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 60px;
   display: flex;
   flex-direction: row;
