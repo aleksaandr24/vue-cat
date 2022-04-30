@@ -27,9 +27,9 @@ export default {
     }
   },
 
-  beforeUpdate() {
+  beforeCreate() { 
     if (this.categoryID !== undefined) {
-      this.$store.commit('setNavBarMenuCurrentID', parseInt(this.categoryID))
+    this.$store.commit('setNavBarMenuCurrentID', parseInt(this.categoryID))
 
       if (this.subCategoryID !== undefined) {
       this.$store.commit('setSideMenuCurrentID', parseInt(this.subCategoryID))
@@ -50,6 +50,31 @@ export default {
         }
       })
     }
-  }
+  },
+
+  beforeUpdate() {
+    if (this.categoryID !== undefined) {
+    this.$store.commit('setNavBarMenuCurrentID', parseInt(this.categoryID))
+
+      if (this.subCategoryID !== undefined) {
+      this.$store.commit('setSideMenuCurrentID', parseInt(this.subCategoryID))
+      } else {
+        this.$router.push({
+          name: 'catalogSubCategory',
+          params: {
+            categoryID: this.categoryID,
+            subCategoryID: this.$store.getters.getDefaultSideMenuCurrentID
+          }
+        })
+      }
+    } else {
+      this.$router.push({
+        name: 'catalogCategory',
+        params: {
+          categoryID: this.$store.getters.getDefaultNavBarCurrentID
+        }
+      })
+    }
+  },
 }
 </script>

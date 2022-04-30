@@ -7,6 +7,7 @@ export default createStore({
     return {
       dataJsonAPI: 'http://test1.web-gu.ru/',
       currentDataJsonAPI: 'http://test1.web-gu.ru/?action=show_product&id=',
+      catalogDataLoading: false,
       catalogData: null,
       navBarMenuCurrentID: null,
       sideMenuCurrentID: null,
@@ -68,21 +69,26 @@ export default createStore({
   },
   
   mutations: {
-    createCatalogJSON(state) {
+    async createCatalogJSON(state) {
       const createTreeObj = (data, idField, parentField, rootParent) => {
         let tree = { [rootParent]: { children: [] } }
         data.forEach(n => tree[n[idField]] = { ...n, children: [] })
         data.forEach(n => tree[n[parentField]].children.push(tree[n[idField]]))
         return tree[rootParent].children
       }
-      axios
+      state.catalogDataLoading = true
+      await axios
         .get(state.dataJsonAPI)
         .then(response => {
           state.catalogData = createTreeObj(response.data, 'id', 'parent_id', -1)
           state.navBarMenuCurrentID = state.catalogData[0].id
           state.sideMenuCurrentID = state.catalogData[0].children[0].id
+          setTimeout(() => state.catalogDataLoading = false, 2000)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error)
+          state.catalogDataLoading = false
+        })
     },
     
     setNavBarMenuCurrentID(state, id) {

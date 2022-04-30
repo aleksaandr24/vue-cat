@@ -42,6 +42,16 @@
     }
 }
 
+.item__image_preload {
+  height: 247px;
+  width: 353px;
+  position: absolute;
+  z-index: 100;
+  background: $components-background-color;
+  border: none;
+  @include flex-vh-center;
+}
+
 .item__name {
   height: 44px;
   padding-left: 29px;

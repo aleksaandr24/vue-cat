@@ -96,17 +96,21 @@ import { required, helpers } from '@vuelidate/validators'
 
 export default {
   name: 'ModalDetailedBody',
+  
   setup () {
     return { v$: useVuelidate() }
   },
+  
   components: {
     Tabs,
     Tab,
     ReviewRating
   },
+  
   props: {
     catalogItemFull: Object
   },
+  
   data () {
     return {
       reviewFormRating: null,
@@ -115,19 +119,23 @@ export default {
       reviewSended: false
     }
   },
+  
   validations () {
     return {
       reviewFormRating: {
         required: helpers.withMessage('Оценка не должна быть пустой', required)
       },
+      
       reviewFormName: {
         required: helpers.withMessage('Имя не должно быть пустым', required)
       },
+      
       reviewFormText: {
         required: helpers.withMessage('Отзыв не должен быть пустым', required)
       }
     }
   },
+  
   methods: {
     addReview() {
       if (!this.v$.reviewFormRating.$invalid &&
@@ -149,7 +157,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

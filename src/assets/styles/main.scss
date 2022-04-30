@@ -72,6 +72,10 @@ body {
   background-color: $container-background-color;
 }
 
+.container_preload {
+  @include flex-vh-center;
+}
+
 .main-container {
   min-height: 100vh;
   margin-top: 60px;

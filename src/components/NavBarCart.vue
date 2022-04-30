@@ -28,25 +28,18 @@ import ModalCartBodyOrdered from '@/components/ModalCartBodyOrdered.vue'
 
 export default {
   name: 'NavBarCart',
+  
   components: {
     ModalContainer,
     ModalCartBody,
     ModalCartBodyEmpty,
     ModalCartBodyOrdered
   },
+  
   data() {
     return {
       showModal: false
     }
-  },
-  computed: {
-    cartIndicator() {
-      return true
-    }
   }
 }
 </script>
-
-<style>
-
-</style>

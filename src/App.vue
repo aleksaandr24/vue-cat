@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'App',
+  
   created() {
     //Read the status information in sessionStorage when the page is loaded
       if (sessionStorage.getItem("store")) {
@@ -19,7 +20,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

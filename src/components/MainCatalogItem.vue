@@ -1,7 +1,10 @@
 <template>
   <div class="main-catalog__item">
+    <div v-if="imageLoading" class="item_image item__image_preload">
+      <CatalogPreloader/>
+    </div>    
     <div class="item__image" @click="setStateCurrentItem">
-      <img :src="catalogItem.img" alt="item_image">
+      <img :src="catalogItem.img" alt="item_image" @load="setImageLoaded">
     </div>
     <div class="item__name" @click="setStateCurrentItem">
       <button tabindex="20">{{ catalogItem.name }}</button>
@@ -10,7 +13,7 @@
       {{ catalogItem.price.toLocaleString('ru-RU') }}&nbsp;&#8381;
     </div>
     <div class="item__cart-button">
-      <button tabindex="21" v-if="!isInSHopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
+      <button tabindex="21" v-if="!isInShopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
       <button tabindex="21" v-else class="cart-button cart-button_in-cart" @click="this.$store.commit('deleteShopCart', catalogItem.id)">В корзине</button>
     </div>
   </div>
@@ -29,26 +32,34 @@
 <script>
 import ModalContainer from '@/components/ModalContainer.vue'
 import ModalDetailedBody from '@/components/ModalDetailedBody.vue'
+import CatalogPreloader from '@/components/CatalogPreloader.vue'
 
 export default {
   name: 'MainCatalogItem',
+  
   components: {
     ModalContainer,
-    ModalDetailedBody
+    ModalDetailedBody,
+    CatalogPreloader
   },
+  
   data() {
     return {
-      showModal: false
+      showModal: false,
+      imageLoading: true
     }
   },
+  
   props: {
     catalogItem: Object
   },
+  
   methods: {
     addShopCart() {
       this.$store.commit('addShopCart', this.catalogItem)
     },
-    isInSHopCart(itemID) {
+    
+    isInShopCart(itemID) {
       for (let key in this.$store.state.shopCart) {
         if (this.$store.state.shopCart[key].id === itemID) {
           return true
@@ -56,15 +67,16 @@ export default {
       }
       return false
     },
+    
     setStateCurrentItem() {
       this.showModal = true
       this.$store.commit('setModalDetailedCurrentID', this.catalogItem.id)
       this.$store.commit('getModalDetailedCurrentItem')
+    },
+
+    setImageLoaded() {
+      setTimeout(() => this.imageLoading = false, 1000)
     }
   }
 }
 </script>
-
-<style>
-
-</style>
