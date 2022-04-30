@@ -122,7 +122,7 @@ export default {
               setTimeout(() => {
                 this.makingOrder = false
                 this.$store.commit('changeShopOrdered', true)
-              }, 3000) 
+              }, 2000) 
             }
             else {
               console.log('Making order error:')

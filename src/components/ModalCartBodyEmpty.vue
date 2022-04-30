@@ -9,7 +9,3 @@ export default {
   name: 'ModalCartBodyEmpty'
 }
 </script>
-
-<style>
-
-</style>

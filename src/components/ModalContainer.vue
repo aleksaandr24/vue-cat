@@ -1,16 +1,13 @@
 <template>
   <Transition name="modal">
-    <div v-if="show" class="modal-mask" @click="$emit('close')">
+    <div v-if="show" @click="$emit('close')" class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container" @click.stop>
+        <div @click.stop class="modal-container">
           <div class="modal-header">
             <div>
               <slot name="header"></slot>
             </div>
-            <div
-            class="modal-close-button"
-            @click="$emit('close')"
-          ></div>
+            <div @click="$emit('close')" class="modal-close-button"></div>
           </div>
           <div class="modal-body">
             <slot name="body"></slot>
@@ -28,7 +25,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

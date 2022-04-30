@@ -13,6 +13,7 @@ import NavBarCart from '@/components/NavBarCart.vue'
 
 export default {
   name: 'NavBar',
+  
   components: {
     NavBarLogo,
     NavBarMenu,
@@ -20,7 +21,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

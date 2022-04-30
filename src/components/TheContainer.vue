@@ -15,6 +15,7 @@ import MainContainer from '@/components/MainContainer.vue'
 
 export default {
   name: 'TheContainer',
+  
   components: {
     CatalogPreloader,
     NavBar,
@@ -22,7 +23,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

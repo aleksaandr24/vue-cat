@@ -11,13 +11,10 @@ import MainCatalog from '@/components/MainCatalog.vue'
 
 export default {
   name: 'MainContainer',
+  
   components: {
     MainSideMenu,
     MainCatalog
   }
 }
 </script>
-
-<style>
-
-</style>

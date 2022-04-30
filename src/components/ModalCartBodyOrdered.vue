@@ -7,12 +7,9 @@
 <script>
 export default {
   name: 'ModalCartBodyOrdered',
+  
   mounted() {
     this.$store.commit('defaultShopCart')
   }
 }
 </script>
-
-<style>
-
-</style>

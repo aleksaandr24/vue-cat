@@ -6,12 +6,9 @@
 <script>
 export default {
   name: 'ReviewRating',
+  
   props: {
     rate: Number
   }
 }
 </script>
-
-<style>
-
-</style>

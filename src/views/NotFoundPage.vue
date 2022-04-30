@@ -9,10 +9,9 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'NotFoundPage',
+  
   methods: {
     goHome() {
       this.$router.push({
@@ -26,7 +25,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
