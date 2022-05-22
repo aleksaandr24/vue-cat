@@ -9,6 +9,7 @@
 
 <script>
 import MainCatalogItem from '@/components/MainCatalogItem.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'MainCatalog',
@@ -18,9 +19,9 @@ export default {
   },
   
   computed: {
-    catalogItems () {
-      return this.$store.getters.getCatalogItems
-    }
+    ...mapGetters({
+      catalogItems: 'getCatalogItems'
+    })
   }
 }
 </script>

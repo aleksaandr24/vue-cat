@@ -8,13 +8,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'MainSideMenu',
 
   computed: {
-    sideMenu () {
-      return this.$store.getters.getSideMenu
-    },
+    ...mapGetters({
+      sideMenu: 'getSideMenu'
+    }),
 
     categoryID() {
       return this.$route.params.categoryID

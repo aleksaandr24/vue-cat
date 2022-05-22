@@ -97,7 +97,7 @@ import { required, helpers } from '@vuelidate/validators'
 export default {
   name: 'ModalDetailedBody',
   
-  setup () {
+  setup() {
     return { v$: useVuelidate() }
   },
   
@@ -111,7 +111,7 @@ export default {
     catalogItemFull: Object
   },
   
-  data () {
+  data() {
     return {
       reviewFormRating: null,
       reviewFormName: null,

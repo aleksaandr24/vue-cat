@@ -10,14 +10,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'NavBarMenu',
   
   computed: {
-    navBarMenu() {
-      return this.$store.getters.getNavBarMenu
-    },
-
+    ...mapGetters({
+      navBarMenu: 'getNavBarMenu'
+    }),
+    
     categoryID() {
       return this.$route.params.categoryID
     },
@@ -75,6 +77,6 @@ export default {
         }
       })
     }
-  },
+  }
 }
 </script>

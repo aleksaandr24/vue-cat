@@ -71,11 +71,11 @@ export default {
     CatalogPreloader
   },
   
-  setup () {
+  setup() {
     return { v$: useVuelidate() }
   },
   
-  data () {
+  data() {
     return {
       orderFormName: '',
       orderFormPhone: '',
@@ -84,7 +84,7 @@ export default {
     }
   },
   
-  validations () {
+  validations() {
     return {
       orderFormName: {
         required: helpers.withMessage('Имя не должно быть пустым', required)
@@ -114,7 +114,7 @@ export default {
             method: 'get',
             url: 'http://test1.web-gu.ru/?action=send_form',
             params: orderFormData,
-            headers: {'Content-Type': 'application/json; charset=UTF-8' }
+            headers: {'Content-Type': 'application/json; charset=UTF-8'}
             })
           .then(response => {
             if (response.data.result) {
