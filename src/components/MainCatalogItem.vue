@@ -10,7 +10,7 @@
       <button tabindex="20">{{ catalogItem.name }}</button>
     </div>
     <div class="item__cost">
-      {{ catalogItem.price.toLocaleString('ru-RU') }}&nbsp;&#8381;
+      {{ catalogItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
     </div>
     <div class="item__cart-button">
       <button tabindex="21" v-if="!isInShopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>

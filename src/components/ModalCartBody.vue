@@ -18,7 +18,7 @@
           {{ item.name }}
         </div>
         <div class="item__cost">
-          {{ item.price.toLocaleString('ru-RU') }}&nbsp;&#8381;
+          {{ item.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
         </div>
         <div class="item__delete">
           <button @click="this.$store.commit('deleteShopCart', item.id)">Убрать из корзины</button>

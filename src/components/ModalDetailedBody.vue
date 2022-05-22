@@ -6,7 +6,7 @@
     {{ catalogItemFull.name }}
   </div>
   <div class="modal-detailed__item-price">
-    {{ catalogItemFull.price.toLocaleString('ru-RU') }}&nbsp;&#8381;
+    {{ catalogItemFull.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
   </div>
   <Tabs :options="{ useUrlFragment: false }" wrapper-class="modal-detailed__item-tabs-wrapper" panels-wrapper-class="item-tabs__panels" nav-class="item-tabs__nav" nav-item-class="item-tabs__item" nav-item-active-class="item-tabs__item_active" nav-item-link-class="item-tabs__link" nav-item-link-active-class="item-tabs__link_active">
     <Tab id="item_description" name="Описание" panel-class="item_tabs__panel">
