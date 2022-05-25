@@ -3,10 +3,10 @@
     <div v-if="imageLoading" class="item_image item__image_preload">
       <CatalogPreloader/>
     </div>    
-    <div class="item__image" @click="setStateCurrentItem">
+    <div class="item__image" @click="modalShow">
       <img :src="catalogItem.img" alt="item_image" @load="setImageLoaded">
     </div>
-    <div class="item__name" @click="setStateCurrentItem">
+    <div class="item__name" @click="modalShow">
       <button tabindex="20">{{ catalogItem.name }}</button>
     </div>
     <div class="item__cost">
@@ -18,7 +18,7 @@
     </div>
   </div>
   <Teleport to="#app">
-    <ModalContainer :show="showModal" @close="showModal = false; this.$store.commit('setModalDetailedCurrentID', null)">
+    <ModalContainer :show="showModal" @close="modalHide">
       <template #header>
         <h3>Информация</h3>
       </template>
@@ -68,14 +68,20 @@ export default {
       return false
     },
     
-    setStateCurrentItem() {
+    setImageLoaded() {
+      setTimeout(() => this.imageLoading = false, 1000)
+    },
+
+    modalShow() {
       this.showModal = true
+      document.body.classList.add('modal-open')
       this.$store.commit('setModalDetailedCurrentID', this.catalogItem.id)
       this.$store.commit('getModalDetailedCurrentItem')
     },
 
-    setImageLoaded() {
-      setTimeout(() => this.imageLoading = false, 1000)
+    modalHide() {
+      this.showModal = false
+      this.$store.commit('setModalDetailedCurrentID', null)
     }
   }
 }
