@@ -1,6 +1,5 @@
 .modal-cart-empty__body {
-  height: 100%;
-  width: 100%;
+  height: 550px;
   @include flex-vh-center;
   background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat center 30%;
     & h2 {
