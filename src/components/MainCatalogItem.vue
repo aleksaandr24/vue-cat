@@ -82,6 +82,7 @@ export default {
     modalHide() {
       this.showModal = false
       this.$store.commit('setModalDetailedCurrentID', null)
+      document.body.classList.remove('modal-open')
     }
   }
 }

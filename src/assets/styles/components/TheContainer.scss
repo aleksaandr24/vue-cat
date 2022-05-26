@@ -1,0 +1,8 @@
+.container {
+  min-height: calc(100vh - 60px);
+  background-color: $container-background-color;
+  
+  &_preload {
+    @include flex-vh-center;
+  }
+}

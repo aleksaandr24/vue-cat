@@ -93,7 +93,7 @@
 }
 
 .modal-cart-ordered__body {
-  height: 100%;
+  height: 550px;
   width: 100%;
   @include flex-vh-center;
   background: url('@/assets/images/modal__ordered.svg') no-repeat center 30%;
@@ -103,7 +103,7 @@
 }
 
 .modal-cart-ordering {
-  height: 100%;
+  height: 550px;
   width: 100%;
   @include flex-vh-center;
   flex-direction: column;

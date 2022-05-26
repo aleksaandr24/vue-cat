@@ -1,61 +1,8 @@
-/*=============================== Fonts ===============================*/
-@font-face {
-  font-family: 'RobotoRegular';
-  src: url('@/assets/fonts/Roboto-Regular.ttf');
-}
+/*=============================== Common ===============================*/
+@import "./common/fonts",
+        "./common/variables",
+        "./common/mixins";
 
-@font-face {
-  font-family: 'RobotoBold';
-  src: url('@/assets/fonts/Roboto-Bold.ttf');
-}
-
-/*=============================== Variables ===============================*/
-$container-background-color: #E5E5E5;
-$components-background-color: #FFFFFF;
-$components-border: 1px solid #E4E4E4;
-$components-border-radius: 10px;
-$text-color: #424242;
-$accent-color: #FF6969;
-$hover-color: #FC7676;
-$accent-background-text: #FFFFFF;
-
-/*=============================== Mixins ===============================*/
-@mixin effect-shadow {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
-}
-
-@mixin main-text($size, $height, $color) {
-  font: {
-    family: 'RobotoRegular';
-    weight: 400;
-    size: $size;
-  }
-  line-height: $height;
-  color: $color;
-}
-
-@mixin main-text-bold($size, $height, $color) {
-  font: {
-    family: 'RobotoBold';
-    weight: 700;
-    size: $size;
-  }
-  line-height: $height;
-  color: $color;
-}
-
-@mixin flex-vh-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin flex-v-center {
-  display: flex;
-  align-items: center;
-}
-
-/*=============================== General ===============================*/
 * {
   margin: 0;
   padding: 0;
@@ -74,30 +21,30 @@ body.modal-open {
   position: fixed;
 }
 
-/*=============================== Containers ===============================*/
-#app {
-  min-height: calc(100vh - 60px);
-}
+/*=============================== Components ===========================*/
+@import "not-found",
+        "nav-bar",
+        "main-side-menu",
+        "main-catalog",
+        "modal",
+        "modal-cart",
+        "modal-detailed";
 
-.container {
-  min-height: calc(100vh - 60px);
-  background-color: $container-background-color;
-}
-
-.container_preload {
-  @include flex-vh-center;
-}
-
-.main-container {
-  min-height: calc(100vh - 60px);
-  width: 100%;
-  margin-top: 60px;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-}
-
-/*=============================== Components Import ===============================*/
-
-@import "not-found", "nav-bar", "main-side-menu", "main-catalog",
-        "modal", "modal-cart", "modal-detailed";
+@import "./components/App",
+        "./components/CatalogPreloader",
+        "./components/MainCatalog",
+        "./components/MainCatalogItem",
+        "./components/MainContainer",
+        "./components/MainSideMenu",
+        "./components/ModalCartBody",
+        "./components/ModalCartBodyEmpty",
+        "./components/ModalCartBodyOrdered",
+        "./components/ModalContainer",
+        "./components/ModalDetailedBody",
+        "./components/NavBar",
+        "./components/NavBarCart",
+        "./components/NavBarLogo",
+        "./components/NavBarMenu",
+        "./components/ReviewRating",
+        "./components/TheContainer",
+        "./components/NotFoundPage";

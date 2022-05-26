@@ -1,9 +1,14 @@
 <template>
-  <div v-if="!$store.state.catalogDataLoading" class="container">
+  <div
+    v-if="!$store.state.catalogDataLoading"
+    class="container"
+  >
     <NavBar/>
     <MainContainer/>
   </div>
-  <div v-else class="container container_preload">
+  <div
+    v-else class="container container_preload"
+  >
     <CatalogPreloader/>
   </div>
 </template>
