@@ -59,9 +59,7 @@
   display: flex;
   align-items: flex-end;
   font-weight: 500;
-    & button {
-      border: none;
-      background: none;
+    & a {
       @include main-text(18px, 21px, $text-color);
       cursor: pointer;
     }

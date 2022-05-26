@@ -63,6 +63,7 @@ $accent-background-text: #FFFFFF;
 
 body {
   min-height: calc(100vh - 60px);
+  width: 100%;
   overflow-y: auto;
   background-color: $container-background-color;
   font-family: 'RobotoRegular', Arial, Helvetica, sans-serif;

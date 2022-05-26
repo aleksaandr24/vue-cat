@@ -7,7 +7,7 @@
       <img :src="catalogItem.img" alt="item_image" @load="setImageLoaded">
     </div>
     <div class="item__name" @click="modalShow">
-      <button tabindex="20">{{ catalogItem.name }}</button>
+      <a tabindex="20">{{ catalogItem.name }}</a>
     </div>
     <div class="item__cost">
       {{ catalogItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
