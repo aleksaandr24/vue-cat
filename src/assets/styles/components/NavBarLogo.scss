@@ -1,0 +1,13 @@
+.navbar__logo {
+  height: 60px;
+  flex-basis: 165px;
+  background: $accent-color url('@/assets/images/navbar__logo.svg') no-repeat 29px 14px;
+    &:hover {
+      background-color: $hover-color;
+    }
+}
+
+.logo-link {
+  height: 100%;
+  width: 100%;
+}

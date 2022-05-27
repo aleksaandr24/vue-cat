@@ -1,0 +1,32 @@
+.navbar__menu {
+  flex-grow: 1;
+}
+
+.navbar__menu-list {
+  height: 60px;
+  padding-left: 24px;
+  list-style-type: none;
+  @include main-text(18px, 21px, $text-color);
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar__menu-item {
+  margin-right: 45px;
+  padding-top: 20px;
+    &:hover {
+      border-bottom: 4px solid $hover-color;
+    }
+}
+
+.navbar__menu-item_current {
+  border-bottom: 4px solid $accent-color;
+    &:hover {
+      border-bottom-color: $hover-color;
+    }
+}
+
+.navbar__menu-link {
+  color: $text-color;
+  text-decoration: none;
+}

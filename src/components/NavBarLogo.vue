@@ -1,7 +1,11 @@
 <template>
   <div class="navbar__logo">
     <a href="/">
-      <div tabindex="1" class="logo-link"></div>
+      <div 
+        tabindex="1"
+        class="logo-link"
+      >
+      </div>
     </a>
   </div>
 </template>

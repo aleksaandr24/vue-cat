@@ -1,8 +1,18 @@
 <template>
   <div class="navbar__menu">
-    <ul v-if="navBarMenu.length > 0" class="navbar__menu-list">
-      <li v-for="(menuItem, index) in navBarMenu" :key="index" :class="['navbar__menu-item', {'navbar__menu-item_current' : menuItem.id === parseInt(categoryID)}]">
-        <router-link @click="this.$store.commit('setNavBarMenuCurrentID', menuItem.id)" class="navbar__menu-link" :to="'/catalog/' + menuItem.id">{{ menuItem.name }}</router-link>
+    <ul
+      v-if="navBarMenu.length > 0"
+      class="navbar__menu-list">
+      <li
+        v-for="(menuItem, index) in navBarMenu"
+        :key="index"
+        :class="['navbar__menu-item', {'navbar__menu-item_current' : menuItem.id === parseInt(categoryID)}]"
+      >
+        <router-link
+          @click="this.$store.commit('setNavBarMenuCurrentID', menuItem.id)"
+          class="navbar__menu-link" :to="'/catalog/' + menuItem.id">
+            {{ menuItem.name }}
+        </router-link>
       </li>
     </ul>
     <div v-else class="navbar__menu-list">Категорий нет</div>

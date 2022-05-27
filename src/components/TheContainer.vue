@@ -6,9 +6,7 @@
     <NavBar/>
     <MainContainer/>
   </div>
-  <div
-    v-else class="container container_preload"
-  >
+  <div v-else class="container container_preload">
     <CatalogPreloader/>
   </div>
 </template>
