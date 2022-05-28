@@ -32,7 +32,7 @@
         </div>
         <div class="cart-item__delete">
           <button
-            @click="this.$store.commit('deleteShopCart', item.id)"
+            @click="this.removeShopCartItem(item.id)"
             class="cart-item__delete-button"
           >
             Убрать из корзины
@@ -110,8 +110,9 @@
 <script>
 import CatalogPreloader from '@/components/CatalogPreloader.vue'
 import useVuelidate from '@vuelidate/core'
-import { required, helpers } from '@vuelidate/validators'
 import axios from 'axios'
+import { required, helpers } from '@vuelidate/validators'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'ModalCartBody',
@@ -150,6 +151,11 @@ export default {
   },
   
   methods: {
+    ...mapActions([
+      'removeShopCartItem',
+      'changeShopOrdered'
+    ]),
+    
     makeOrder() {
       if (!this.v$.orderFormName.$invalid &&
         !this.v$.orderFormPhone.$invalid &&
@@ -170,7 +176,7 @@ export default {
               this.makingOrder = true
               setTimeout(() => {
                 this.makingOrder = false
-                this.$store.commit('changeShopOrdered', true)
+                this.changeShopOrdered(true)
               }, 2000) 
             }
             else {

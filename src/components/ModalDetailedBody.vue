@@ -281,7 +281,7 @@ export default {
           avatar: 'https://loremflickr.com/60/60',
           text: this.reviewFormText
         }
-        this.$store.commit('addtModalDetailedCurrentItemReview', reviewFormData)
+        this.$store.dispatch('makeCurrentModalDetailedReview', reviewFormData)
         this.reviewSended = true
         this.reviewFormRating = null
         this.reviewFormName = null

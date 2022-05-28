@@ -34,7 +34,7 @@
     <div class="catalog-item__cart">
       <button
         v-if="!isInShopCart(catalogItem.id)"
-        @click="addShopCart"
+        @click="addToShopCart"
         tabindex="21"
         class="cart-button"
       >
@@ -42,7 +42,7 @@
       </button>
       <button
         v-else
-        @click="this.$store.commit('deleteShopCart', catalogItem.id)"
+        @click="deleteFromShopCart"
         tabindex="21"
         class="cart-button cart-button_in-cart"
       >
@@ -70,6 +70,7 @@
 import ModalContainer from '@/components/ModalContainer.vue'
 import ModalDetailedBody from '@/components/ModalDetailedBody.vue'
 import CatalogPreloader from '@/components/CatalogPreloader.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'MainCatalogItem',
@@ -92,8 +93,19 @@ export default {
   },
   
   methods: {
-    addShopCart() {
-      this.$store.commit('addShopCart', this.catalogItem)
+    ...mapActions([
+      'makePushShopCartItem',
+      'removeShopCartItem',
+      'makeCurrentModalDetailedID',
+      'getModalDetailedCurrentItem'
+    ]),
+    
+    addToShopCart() {
+      this.makePushShopCartItem(this.catalogItem)
+    },
+
+    deleteFromShopCart() {
+      this.removeShopCartItem(this.catalogItem.id)
     },
     
     isInShopCart(itemID) {
@@ -112,13 +124,13 @@ export default {
     modalShow() {
       this.showModal = true
       document.body.classList.add('modal-open')
-      this.$store.commit('setModalDetailedCurrentID', this.catalogItem.id)
-      this.$store.commit('getModalDetailedCurrentItem')
+      this.makeCurrentModalDetailedID(this.catalogItem.id)
+      this.getModalDetailedCurrentItem()
     },
 
     modalHide() {
       this.showModal = false
-      this.$store.commit('setModalDetailedCurrentID', null)
+      this.makeCurrentModalDetailedID(null)
       document.body.classList.remove('modal-open')
     }
   }

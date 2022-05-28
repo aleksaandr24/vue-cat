@@ -60,7 +60,7 @@ export default {
 
     modalHide() {
       this.showModal = false
-      this.$store.commit('changeShopOrdered', false)
+      this.$store.dispatch('changeShopOrdered', false)
       document.body.classList.remove('modal-open')
     }
   }

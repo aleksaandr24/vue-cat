@@ -8,7 +8,7 @@
       class="side-menu__item"
     >
       <router-link
-        @click="this.$store.commit('setSideMenuCurrentID', menuItem.id)"
+        @click="this.$store.dispatch('makeCurrentSideMenuID', menuItem.id)"
         :to="'/catalog/' + categoryID + '/' + menuItem.id"
         :class="['side-menu__link', {'side-menu__link_current' : menuItem.id === subCategoryID}]"
       >

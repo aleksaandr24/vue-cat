@@ -1,15 +1,15 @@
 <template>
   <div class="navbar__menu">
     <ul
-      v-if="navBarMenu.length > 0"
+      v-if="getNavBarMenu.length > 0"
       class="navbar__menu-list">
       <li
-        v-for="(menuItem, index) in navBarMenu"
+        v-for="(menuItem, index) in getNavBarMenu"
         :key="index"
         :class="['navbar__menu-item', {'navbar__menu-item_current' : menuItem.id === parseInt(categoryID)}]"
       >
         <router-link
-          @click="this.$store.commit('setNavBarMenuCurrentID', menuItem.id)"
+          @click="this.makeCurrentNavBarID(menuItem.id)"
           class="navbar__menu-link" :to="'/catalog/' + menuItem.id">
             {{ menuItem.name }}
         </router-link>
@@ -20,15 +20,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'NavBarMenu',
   
   computed: {
-    ...mapGetters({
-      navBarMenu: 'getNavBarMenu'
-    }),
+    ...mapGetters([
+      'getNavBarMenu'
+    ]),
     
     categoryID() {
       return this.$route.params.categoryID
@@ -41,10 +41,10 @@ export default {
 
   beforeCreate() { 
     if (this.categoryID !== undefined) {
-    this.$store.commit('setNavBarMenuCurrentID', parseInt(this.categoryID))
+    this.makeCurrentNavBarID(parseInt(this.categoryID))
 
       if (this.subCategoryID !== undefined) {
-      this.$store.commit('setSideMenuCurrentID', parseInt(this.subCategoryID))
+      this.makeCurrentSideMenuID(parseInt(this.subCategoryID))
       } else {
         this.$router.push({
           name: 'catalogSubCategory',
@@ -66,10 +66,10 @@ export default {
 
   beforeUpdate() {
     if (this.categoryID !== undefined) {
-    this.$store.commit('setNavBarMenuCurrentID', parseInt(this.categoryID))
+    this.makeCurrentNavBarID(parseInt(this.categoryID))
 
       if (this.subCategoryID !== undefined) {
-      this.$store.commit('setSideMenuCurrentID', parseInt(this.subCategoryID))
+      this.makeCurrentSideMenuID(parseInt(this.subCategoryID))
       } else {
         this.$router.push({
           name: 'catalogSubCategory',
@@ -87,6 +87,13 @@ export default {
         }
       })
     }
+  },
+
+  methods: {
+    ...mapActions([
+      'makeCurrentNavBarID',
+      'makeCurrentSideMenuID'
+    ])
   }
 }
 </script>

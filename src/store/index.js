@@ -69,28 +69,14 @@ export default createStore({
   },
   
   mutations: {
-    async createCatalogJSON(state) {
-      const createTreeObj = (data, idField, parentField, rootParent) => {
-        let tree = { [rootParent]: { children: [] } }
-        data.forEach(n => tree[n[idField]] = { ...n, children: [] })
-        data.forEach(n => tree[n[parentField]].children.push(tree[n[idField]]))
-        return tree[rootParent].children
-      }
-      state.catalogDataLoading = true
-      await axios
-        .get(state.dataJsonAPI)
-        .then(response => {
-          state.catalogData = createTreeObj(response.data, 'id', 'parent_id', -1)
-          state.navBarMenuCurrentID = state.catalogData[0].id
-          state.sideMenuCurrentID = state.catalogData[0].children[0].id
-          setTimeout(() => state.catalogDataLoading = false, 2000)
-        })
-        .catch(error => {
-          console.log(error)
-          state.catalogDataLoading = false
-        })
+    setCatalogDataLoading(state, flag) {
+      state.catalogDataLoading = flag
     },
     
+    setCatalogData(state, data) {
+      state.catalogData = data
+    },
+
     setNavBarMenuCurrentID(state, id) {
       state.navBarMenuCurrentID = id
     },
@@ -111,7 +97,7 @@ export default createStore({
       }
     },
     
-    changeShopOrdered(state, flag) {
+    setShopOrdered(state, flag) {
       state.shopOrdered = flag
     },
     
@@ -123,18 +109,79 @@ export default createStore({
       state.modalDetailedCurrentID = itemID
     },
     
-    getModalDetailedCurrentItem(state) {
-      let path = state.currentDataJsonAPI + state.modalDetailedCurrentID
-      axios
-        .get(path)
-        .then(response => { 
-          state.modalDetailedCurrentItem = response.data
-        })
-        .catch(error => console.log(error))
+    setModalDetailedCurrentItem(state, item) {
+      state.modalDetailedCurrentItem = item
     },
     
     addtModalDetailedCurrentItemReview(state, review) {
       state.modalDetailedCurrentItem.reviews.push(review)
+    }
+  },
+
+  actions: {
+    async createCatalogJSON({ commit, state }) {
+      const createTreeObj = (data, idField, parentField, rootParent) => {
+        let tree = { [rootParent]: { children: [] } }
+        data.forEach(n => tree[n[idField]] = { ...n, children: [] })
+        data.forEach(n => tree[n[parentField]].children.push(tree[n[idField]]))
+        return tree[rootParent].children
+      }
+      commit('setCatalogDataLoading', true)
+      await axios
+        .get(state.dataJsonAPI)
+        .then(response => {
+          let responseData = createTreeObj(response.data, 'id', 'parent_id', -1)
+          commit('setCatalogData', responseData)
+          commit('setNavBarMenuCurrentID', state.catalogData[0].id)
+          commit('setSideMenuCurrentID', state.catalogData[0].children[0].id)
+          setTimeout(() => state.catalogDataLoading = false, 2000)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setCatalogDataLoading', false)
+        })
+    },
+
+    makeCurrentNavBarID({ commit }, id) {
+      commit('setNavBarMenuCurrentID', id)
+    },
+
+    makeCurrentSideMenuID({ commit }, id) {
+      commit('setSideMenuCurrentID', id)
+    },
+
+    makePushShopCartItem({ commit }, item) {
+      commit('addShopCart', item)
+    },
+
+    removeShopCartItem({ commit }, item) {
+      commit('deleteShopCart', item)
+    },
+
+    changeShopOrdered({ commit }, flag) {
+      commit('setShopOrdered', flag)
+    },
+
+    dropShopCart({ commit }) {
+      commit('defaultShopCart')
+    },
+
+    makeCurrentModalDetailedID({ commit }, id) {
+      commit('setModalDetailedCurrentID', id)
+    },
+
+    async getModalDetailedCurrentItem({ commit, state }) {
+      const path = state.currentDataJsonAPI + state.modalDetailedCurrentID
+      await axios
+        .get(path)
+        .then(response => { 
+          commit('setModalDetailedCurrentItem', response.data)
+        })
+        .catch(error => console.log(error))
+    },
+
+    makeCurrentModalDetailedReview({ commit }, review) {
+      commit('addtModalDetailedCurrentItemReview', review)
     }
   }
 })

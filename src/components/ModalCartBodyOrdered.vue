@@ -9,7 +9,7 @@ export default {
   name: 'ModalCartBodyOrdered',
   
   mounted() {
-    this.$store.commit('defaultShopCart')
+    this.$store.dispatch('dropShopCart')
   }
 }
 </script>

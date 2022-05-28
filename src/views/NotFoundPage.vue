@@ -14,16 +14,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'NotFoundPage',
   
+  computed: {
+    ...mapGetters([
+      'getDefaultNavBarCurrentID',
+      'getDefaultSideMenuCurrentID'
+    ])
+  },
+
   methods: {
     goHome() {
       this.$router.push({
         name: 'catalogSubCategory',
         params: {
-          categoryID: this.$store.getters.getDefaultNavBarCurrentID,
-          subCategoryID: this.$store.getters.getDefaultSideMenuCurrentID
+          categoryID: this.getDefaultNavBarCurrentID,
+          subCategoryID: this.getDefaultSideMenuCurrentID
         }
       })
     }

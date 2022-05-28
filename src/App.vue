@@ -16,7 +16,7 @@ export default {
       sessionStorage.setItem("store", JSON.stringify(this.$store.state))
     })
 
-    this.$store.commit('createCatalogJSON')
+    this.$store.dispatch('createCatalogJSON')
   }
 }
 </script>
