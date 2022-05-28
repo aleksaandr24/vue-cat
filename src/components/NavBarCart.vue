@@ -1,16 +1,26 @@
 <template>
-  <div class="navbar__cart">
-    <button id="show-modal" @click="modalShow" tabindex="10" class="cart__icon">
-      <div v-if="this.$store.state.shopCart.length > 0" class="cart__bubble">
+  <div class="cart">
+    <button
+      @click="modalShow"
+      tabindex="10"
+      id="show-modal"
+      class="cart__icon"
+    >
+      <div 
+        v-if="this.$store.state.shopCart.length > 0"
+        class="cart__bubble"
+      >
         {{ this.$store.state.shopCart.length }}
       </div>
     </button>
   </div>
   <Teleport to="#app">
-    <ModalContainer :show="showModal" @close="modalHide">
-      <template #header>
-        <h3>Оформить заказ</h3>
-      </template>
+    <ModalContainer
+      :show="showModal"
+      @close="modalHide">
+        <template #header>
+          <h3>Оформить заказ</h3>
+        </template>
       <template #body>
         <ModalCartBodyOrdered v-if="this.$store.state.shopOrdered"/>
         <ModalCartBody v-else-if="this.$store.state.shopCart.length > 0"/>

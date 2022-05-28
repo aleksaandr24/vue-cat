@@ -1,0 +1,24 @@
+.cart {
+  height: 100%;
+  flex-basis: 49px;
+  @include flex-v-center;
+
+    &__icon {
+      border: none;
+      height: 21px;
+      width: 21px;
+      background: url('@/assets/images/navbar__cart-icon.svg') no-repeat;
+      cursor: pointer;
+    }
+
+    &__bubble {
+      height: 18px;
+      width: 18px;
+      position: relative;
+      top: -8px;
+      left: 10px;
+      background: url('@/assets/images/navbar__ellipse-icon.svg') no-repeat;
+      @include flex-vh-center;
+      @include main-text(11px, 13px, $accent-background-text);
+    }
+}
