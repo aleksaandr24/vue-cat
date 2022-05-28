@@ -1,0 +1,261 @@
+.detailed-pic {
+  height: 341px;
+  width: 565px;
+  border-radius: $components-border-radius;
+  border: $components-border;
+  @include flex-vh-center;
+  overflow: hidden;
+  
+  &__img {
+    max-width: none;
+    min-width: auto;
+    min-height: auto;
+    height: 100%;
+  }
+}
+
+.detailed-name {
+  height: 44px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 500;
+  @include main-text(18px, 21px, $text-color)
+}
+
+.detailed-price {
+  height: 30px;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 700;
+  @include main-text-bold(18px, 21px, $text-color)
+}
+
+.item-tabs {
+  margin-top: 30px;
+
+  &__panels {
+    padding-top: 10px;
+  }
+  
+  &__nav {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  &__item {
+    margin-right: 30px;
+    border-bottom: 3px solid #E4E2E2;
+  
+    &_active {
+      border-bottom: 3px solid $accent-color;
+    }
+  }
+  
+  &__link {
+    @include main-text(16px, 19px, $text-color);
+    text-decoration: none;
+  }
+}
+
+.item-description {
+  @include main-text(16px, 19px, $text-color);
+}
+
+.item-properties {
+  padding-top: 20px;
+
+  &__row {
+    height: 36px;
+    width: 90%;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f3f3f3;
+    @include main-text(16px, 19px, $text-color);
+
+    &:nth-child(even) {
+      background-color: #fff;
+    }
+  }
+
+  &__row-caption {
+    @include flex-v-center;
+  }
+
+  &__row-value {
+    color: #979494;
+    @include flex-v-center;
+  }
+
+}
+
+.item-reviews {
+  
+  &__row {
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__avatar {
+    padding: 10px;
+  }
+
+  &__img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  &__author {
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  &__author-name {
+    @include main-text(16px, 19px, #000000);
+  }
+
+  &__text {
+    width: 480px;
+    padding: 13px 19px 5px 14px;
+    background-color: #F3F3F3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+    border-radius: 7px;
+    @include main-text(14px, 16px, $text-color);
+  }
+}
+
+.review-form {
+  
+  &__rate {
+    margin: 20px 0px 10px 0px;
+    @include main-text(16px, 19px, #000000);
+  }
+
+  &__name {
+    @include main-text(16px, 19px, #000000);
+  }
+
+  &__text {
+    @include main-text(16px, 19px, #000000);
+  }
+
+  &__input {
+    height: 41px;
+    width: 100%;
+    margin: 10px 0px;
+    padding-left: 10px;
+    border: 1px solid #898989;
+    box-sizing: border-box;
+    border-radius: 5px;
+    @include main-text(16px, 19px, $text-color);
+
+    &_error {
+      margin-bottom: 0px;
+      border-color: $accent-color;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px 0px 0px 10px;
+    border: 1px solid #898989;
+    box-sizing: border-box;
+    border-radius: 5px;
+    @include main-text(16px, 19px, $text-color);
+
+    &_error {
+      margin-bottom: 0px;
+      border-color: $accent-color;
+    }
+  }
+
+  &__error {
+    margin-bottom: 20px;
+    @include main-text(14px, 16px, $accent-color);
+  }
+
+  &__submit {
+    height: 100px;
+  }
+
+  &__submit-button {
+    height: 40px;
+    width: 219px;
+    margin-top: 30px;
+    background-color: $accent-color;
+    border: none;
+    border-radius: 5px;
+    @include effect-shadow;
+    @include main-text(18px, 21px, $components-background-color);
+    
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+  }
+
+  &__recieve {
+    height: 350px;
+    width: 100%;
+    @include flex-vh-center;
+    background: url('@/assets/images/modal__ordered.svg') no-repeat center 25%;
+    background-size: 15%;
+  }
+
+  &__recieve-title {
+    @include main-text-bold(24px, 28px, $text-color)
+  }
+}
+
+.rating-area {
+	height: 19px;
+  width: 105px;
+  margin: 0px 0px 20px 0px;
+  overflow: hidden;
+}
+
+.rating-area:not(:checked) > input {
+	display: none;
+}
+
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 19px;
+	margin-left: 2px;
+  padding: 0px;
+	cursor: pointer;
+}
+
+.rating-area:not(:checked) > label:before {
+	content: url('@/assets/images/reviews__star_gray.svg');
+}
+
+.rating-area > input:checked ~ label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+	
+}
+
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+}
+
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+}
+
+.rate-area > label:active {
+	position: relative;
+}

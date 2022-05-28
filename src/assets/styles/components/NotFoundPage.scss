@@ -1,0 +1,32 @@
+.not-found {
+  min-height: 100vh;
+  min-width: 100%;
+  background-color: $container-background-color;
+  @include flex-vh-center;
+  flex-direction: column;
+
+  &__title {
+    margin: 20px 0px;
+    @include main-text-bold(36px, 42px, $text-color);
+  }
+
+  &__text {
+    @include main-text(24px, 32px, $text-color);
+  }
+
+  &__button {
+    height: 40px;
+    width: 150px;
+    margin: 20px 0px;
+    background-color: $accent-color;
+    border: none;
+    border-radius: 5px;
+    @include effect-shadow;
+    @include main-text(18px, 21px, $components-background-color);
+
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+  }
+}

@@ -22,14 +22,6 @@ body.modal-open {
 }
 
 /*=============================== Components ===========================*/
-@import "not-found",
-        "nav-bar",
-        "main-side-menu",
-        "main-catalog",
-        "modal",
-        "modal-cart",
-        "modal-detailed";
-
 @import "./components/App",
         "./components/CatalogPreloader",
         "./components/MainCatalog",
