@@ -1,6 +1,6 @@
 <template>
-  <div class="modal-cart-ordered__body">
-    <h2>Заказ успешно создан</h2>
+  <div class="cart-ordered">
+    <h2 class="cart-ordered__title">Заказ успешно создан</h2>
   </div>
 </template>
 

@@ -1,0 +1,10 @@
+.cart-ordered {
+  height: 550px;
+  width: 100%;
+  @include flex-vh-center;
+  background: url('@/assets/images/modal__ordered.svg') no-repeat center 30%;
+  
+  &__title {
+    @include main-text-bold(24px, 28px, $text-color)
+  }
+}

@@ -1,0 +1,130 @@
+.cart-title {
+  @include main-text-bold(18px, 21px, $text-color);
+}
+
+.cart-item {
+  margin: 10px 0px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #EEEEEE;
+  @include flex-v-center;
+  flex-direction: row;
+  
+  &_last {
+    border-bottom: none;
+  }
+  
+  &__pic {
+    height: 97px;
+    width: 138px;
+    border-radius: $components-border-radius;
+    border: $components-border;
+    @include flex-vh-center;
+    overflow: hidden;
+  }
+
+  &__img {
+    max-width: none;
+    min-width: auto;
+    min-height: auto;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    height: 21px;
+    padding-left: 29px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 500;
+    @include main-text(18px, 21px, $text-color);
+  }
+
+  &__cost {
+    height: 30px;
+    padding-left: 29px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 700;
+    @include main-text-bold(18px, 21px, $text-color);
+  }
+
+  &__delete-button {
+    padding: 10px 0px 0px 29px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include main-text(14px, 16px, $accent-color);
+  }
+}
+
+.order-form {
+  margin-top: 50px;
+  @include main-text(16px, 19px, $text-color);
+
+  &__name {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__field {
+    flex-basis: 48%;
+  }
+
+  &__input {
+    height: 41px;
+    width: 100%;
+    margin: 10px 0px;
+    padding-left: 10px;
+    border: 1px solid #898989;
+    box-sizing: border-box;
+    border-radius: 5px;
+    @include main-text(16px, 19px, $text-color);
+
+    &_error {
+      border-color: $accent-color;
+    }
+  }
+
+  &__error {
+    @include main-text(14px, 16px, $accent-color);
+  }
+
+  &__submit {
+    height: 100px;
+  }
+  
+  &__submit-button {
+    height: 40px;
+    width: 219px;
+    margin: 30px 0px;
+    background-color: $accent-color;
+    border: none;
+    border-radius: 5px;
+    @include effect-shadow;
+    @include main-text(18px, 21px, $components-background-color);
+    
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+  }
+}
+
+.cart-ordering {
+  height: 550px;
+  width: 100%;
+  @include flex-vh-center;
+  flex-direction: column;
+  
+  &__title {
+    margin-top: 30px;
+    @include main-text-bold(24px, 28px, $text-color)
+  }
+}

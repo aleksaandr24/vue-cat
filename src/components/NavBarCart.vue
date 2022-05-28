@@ -19,7 +19,7 @@
       :show="showModal"
       @close="modalHide">
         <template #header>
-          <h3>Оформить заказ</h3>
+          <h3 class="modal-header__title">Оформить заказ</h3>
         </template>
       <template #body>
         <ModalCartBodyOrdered v-if="this.$store.state.shopOrdered"/>

@@ -1,0 +1,9 @@
+.cart-empty {
+  height: 550px;
+  @include flex-vh-center;
+  background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat center 30%;
+  
+  &__title {
+    @include main-text-bold(24px, 28px, $text-color)
+  }
+}

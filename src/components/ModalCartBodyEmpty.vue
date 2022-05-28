@@ -1,6 +1,6 @@
 <template>
-  <div class="modal-cart-empty__body">
-    <h2>В корзине ничего нет</h2>
+  <div class="cart-empty">
+    <h2 class="cart-empty__title">В корзине ничего нет</h2>
   </div>
 </template>
 

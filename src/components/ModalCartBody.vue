@@ -1,57 +1,106 @@
 <template>
-  <div v-if="makingOrder" class="modal-cart-ordering">
+  <div
+    v-if="makingOrder"
+    class="cart-ordering"
+  >
     <CatalogPreloader/>
-    <h2>Создание заказа&#8230;</h2>
+    <h2 class="cart-ordering__title">Создание заказа&#8230;</h2>
   </div>
   <div v-else>
     <div>
-      <h3>В корзине:</h3>
+      <h3 class="cart_title">В корзине:</h3>
     </div>
-    <div v-for="(item, index) in this.$store.state.shopCart" :key="index" :class="(index === this.$store.state.shopCart.length - 1 ? 'modal-cart__item modal-cart__item_last' : 'modal-cart__item')">
+    <div
+      v-for="(item, index) in this.$store.state.shopCart"
+      :key="index"
+      :class="(index === this.$store.state.shopCart.length - 1 ? 'cart-item cart-item_last' : 'cart-item')">
       <div>
-        <div class="item__image">
-          <img :src="item.img" alt="item_image">
+        <div class="cart-item__pic">
+          <img
+            :src="item.img"
+            alt="item_image"
+            class="cart-item__img"
+          >
         </div>
       </div>
-      <div class="item__info">
-        <div class="item__name">
+      <div class="cart-item__info">
+        <div class="cart-item__name">
           {{ item.name }}
         </div>
-        <div class="item__cost">
+        <div class="cart-item__cost">
           {{ item.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
         </div>
-        <div class="item__delete">
-          <button @click="this.$store.commit('deleteShopCart', item.id)">Убрать из корзины</button>
+        <div class="cart-item__delete">
+          <button
+            @click="this.$store.commit('deleteShopCart', item.id)"
+            class="cart-item__delete-button"
+          >
+            Убрать из корзины
+          </button>
         </div>
       </div>
     </div>
     <div>
-      <form @submit.prevent="makeOrder" class="order-form">
+      <form
+        @submit.prevent="makeOrder"
+        class="order-form">
         <div class="order-form__name">
-          <div>
+          <div class="order-form__field">
             <label for="order-name">Имя</label><br>
-            <input type="text" id="order-name" v-model.trim="orderFormName" placeholder="Имя" :class="v$.orderFormName.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
-            <span v-if="v$.orderFormName.$invalid" class="order-form__error">
+            <input
+              v-model.trim="orderFormName"
+              :class="v$.orderFormName.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'"
+              type="text"
+              id="order-name"
+              placeholder="Имя"
+            >
+            <span
+              v-if="v$.orderFormName.$invalid"
+              class="order-form__error"
+            >
               {{ v$.orderFormName.required.$message }}
             </span>
           </div>
-          <div>
+          <div class="order-form__field">
             <label for="order-phone">Телефон</label><br>
-            <input type="text" id="order-phone" v-model.trim="orderFormPhone" placeholder="+7 (950) 45-84-345" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
-            <span v-if="v$.orderFormPhone.$invalid" class="order-form__error">
+            <input
+              v-model.trim="orderFormPhone"
+              :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'"
+              type="text"
+              id="order-phone"
+              placeholder="+7 (950) 45-84-345"
+            >
+            <span
+              v-if="v$.orderFormPhone.$invalid"
+              class="order-form__error"
+            >
               {{ v$.orderFormPhone.required.$message }}
             </span>
           </div>
         </div>
         <div class="order-form__address">
           <label for="order-address">Полный адрес</label><br>
-          <input type="text" id="order-address" v-model.trim="orderFormAddress" placeholder="Ул. Пушкина, дом" :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'">
-          <span v-if="v$.orderFormAddress.$invalid" class="order-form__error">
+          <input
+            v-model.trim="orderFormAddress"
+            :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'"
+            type="text"
+            id="order-address"
+            placeholder="Ул. Пушкина, дом"
+          >
+          <span
+            v-if="v$.orderFormAddress.$invalid"
+            class="order-form__error"
+          >
             {{ v$.orderFormAddress.required.$message }}
           </span>
         </div>
-        <div class="order-form__button">
-          <button type="submit">Заказать</button>
+        <div class="order-form__submit">
+          <button
+            type="submit"
+            class="order-form__submit-button"
+          >
+            Заказать
+          </button>
         </div>
       </form>
     </div>
