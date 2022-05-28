@@ -1,9 +1,19 @@
 <template>
-  <div v-if="catalogItems.length > 0" class="main-catalog">
-      <MainCatalogItem v-for="(catalogItem, index) in catalogItems" :key="index" :catalogItem="catalogItem"/>
+  <div
+    v-if="catalogItems.length > 0"
+    class="main-catalog"
+  >
+    <MainCatalogItem
+      v-for="(catalogItem, index) in catalogItems"
+      :key="index"
+      :catalogItem="catalogItem"
+    />
   </div>
-  <div v-else class="main-catalog_empty">
-    <h2>В данной категории товаров пока нет</h2>
+  <div
+    v-else
+    class="main-catalog_empty"
+  >
+    <h2 class="main-catalog__caption">В данной категории товаров пока нет</h2>
   </div>
 </template>
 

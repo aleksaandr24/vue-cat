@@ -1,29 +1,66 @@
 <template>
-  <div class="main-catalog__item">
-    <div v-if="imageLoading" class="item_image item__image_preload">
+  <div class="catalog-item">
+    <div
+      v-if="imageLoading"
+      class="catalog-item__pic catalog-item__pic_preload"
+    >
       <CatalogPreloader/>
     </div>    
-    <div class="item__image" @click="modalShow">
-      <img :src="catalogItem.img" alt="item_image" @load="setImageLoaded">
+    <div
+      @click="modalShow"
+      class="catalog-item__pic"
+    >
+      <img 
+        @load="setImageLoaded"
+        :src="catalogItem.img"
+        alt="item_image"
+        class="catalog-item__img"
+      >
     </div>
-    <div class="item__name" @click="modalShow">
-      <a tabindex="20">{{ catalogItem.name }}</a>
+    <div
+      @click="modalShow"
+      class="catalog-item__name"
+    >
+      <a
+        tabindex="20"
+        class="catalog-item__name-link"
+      >
+        {{ catalogItem.name }}
+      </a>
     </div>
-    <div class="item__cost">
+    <div class="catalog-item__cost">
       {{ catalogItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
     </div>
-    <div class="item__cart-button">
-      <button tabindex="21" v-if="!isInShopCart(catalogItem.id)" @click="addShopCart" class="cart-button">Добавить в корзину</button>
-      <button tabindex="21" v-else class="cart-button cart-button_in-cart" @click="this.$store.commit('deleteShopCart', catalogItem.id)">В корзине</button>
+    <div class="catalog-item__cart">
+      <button
+        v-if="!isInShopCart(catalogItem.id)"
+        @click="addShopCart"
+        tabindex="21"
+        class="cart-button"
+      >
+        Добавить в корзину
+      </button>
+      <button
+        v-else
+        @click="this.$store.commit('deleteShopCart', catalogItem.id)"
+        tabindex="21"
+        class="cart-button cart-button_in-cart"
+      >
+        В корзине
+      </button>
     </div>
   </div>
   <Teleport to="#app">
-    <ModalContainer :show="showModal" @close="modalHide">
+    <ModalContainer
+      :show="showModal"
+      @close="modalHide">
       <template #header>
         <h3>Информация</h3>
       </template>
       <template #body>
-        <ModalDetailedBody :catalogItemFull="this.$store.state.modalDetailedCurrentItem"/>
+        <ModalDetailedBody
+          :catalogItemFull="this.$store.state.modalDetailedCurrentItem"
+        />
       </template>
     </ModalContainer>
   </Teleport>

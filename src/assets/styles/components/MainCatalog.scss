@@ -1,0 +1,19 @@
+.main-catalog {
+  height: 100%;
+  width: 100%;
+  padding: 54px 0 0 36px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &_empty {
+    width: 100%;
+    @include flex-vh-center;
+    background: url('@/assets/images/main-catalog__cart-icon.svg') no-repeat 47% 49%;
+  }
+
+  &__caption {
+    padding: 212px 115px 0px 0px;
+    @include main-text-bold(24px, 28px, $text-color)
+  }
+}

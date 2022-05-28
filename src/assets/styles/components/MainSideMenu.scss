@@ -15,12 +15,13 @@
   &__link {
     color: $text-color;
     text-decoration: none;
-      &:hover {
-        color: $accent-color;
-      }
-  }
-
-  &__link_current {
-    color: $accent-color;
+    
+    &:hover {
+      color: $accent-color;
+    }
+    
+    &_current {
+      color: $accent-color;
+    }
   }
 }

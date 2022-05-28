@@ -1,0 +1,96 @@
+.catalog-item {
+  height: 418px;
+  min-width: 353px;
+  max-width: 353px;
+  margin: 0 36px 33px 0;
+  background-color: $components-background-color;
+  border-radius: $components-border-radius;
+  @include effect-shadow;
+
+  &__pic {
+    height: 246px;
+    width: 100%;
+    border-radius: $components-border-radius;
+    border: $components-border;
+    cursor: pointer;
+    @include flex-vh-center;
+    overflow: hidden;
+
+    &_preload {
+      height: 247px;
+      width: 353px;
+      position: absolute;
+      z-index: 100;
+      background: $components-background-color;
+      border: none;
+      @include flex-vh-center;
+    }
+  }
+
+  &__img {
+    max-width: none;
+    min-width: auto;
+    min-height: auto;
+    height: 100%;
+  }
+
+  &__name {
+    height: 44px;
+    padding-left: 29px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 500;
+  }
+
+  &__name-link {
+    @include main-text(18px, 21px, $text-color);
+    
+    &:hover {
+      cursor: pointer;
+      color: $hover-color;
+    }
+  }
+
+  &__cost {
+    height: 30px;
+    padding-left: 29px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 700;
+    @include main-text-bold(18px, 21px, $text-color);
+  }
+
+  &__cart {
+    height: 72px;
+    padding-left: 29px;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.cart-button {
+  height: 40px;
+  width: 219px;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 5px;
+  @include effect-shadow;
+  @include main-text(18px, 21px, $components-background-color);
+  
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-color;
+  }
+
+  &_in-cart {
+    width: 169px;
+    padding-left: 24px;
+    text-align: left;
+    background: $accent-color url('@/assets/images/cart-button_in-cart.svg') no-repeat 85% center;
+    
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-color;
+    }
+  }
+}
