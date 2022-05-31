@@ -222,11 +222,11 @@
   overflow: hidden;
 }
 
-.rating-area:not(:checked) > input {
+.rating-area:not(:checked) > .rating-area__input {
 	display: none;
 }
 
-.rating-area:not(:checked) > label {
+.rating-area:not(:checked) > .rating-area__label {
 	float: right;
 	width: 19px;
 	margin-left: 2px;
@@ -234,28 +234,27 @@
 	cursor: pointer;
 }
 
-.rating-area:not(:checked) > label:before {
+.rating-area:not(:checked) > .rating-area__label:before {
 	content: url('@/assets/images/reviews__star_gray.svg');
 }
 
-.rating-area > input:checked ~ label {
-	content: url('@/assets/images/reviews__star_yellow.svg');
-	
-}
-
-.rating-area:not(:checked) > label:hover,
-.rating-area:not(:checked) > label:hover ~ label {
+.rating-area > .rating-area__input:checked ~ .rating-area__label {
 	content: url('@/assets/images/reviews__star_yellow.svg');
 }
 
-.rating-area > input:checked + label:hover,
-.rating-area > input:checked + label:hover ~ label,
-.rating-area > input:checked ~ label:hover,
-.rating-area > input:checked ~ label:hover ~ label,
-.rating-area > label:hover ~ input:checked ~ label {
+.rating-area:not(:checked) > .rating-area__label:hover,
+.rating-area:not(:checked) > .rating-area__label:hover ~ .rating-area__label {
 	content: url('@/assets/images/reviews__star_yellow.svg');
 }
 
-.rate-area > label:active {
+.rating-area > .rating-area__input:checked + .rating-area__label:hover,
+.rating-area > .rating-area__input:checked + .rating-area__label:hover ~ .rating-area__label,
+.rating-area > .rating-area__input:checked ~ .rating-area__label:hover,
+.rating-area > .rating-area__input:checked ~ .rating-area__label:hover ~ .rating-area__label,
+.rating-area > .rating-area__label:hover ~ .rating-area__input:checked ~ .rating-area__label {
+	content: url('@/assets/images/reviews__star_yellow.svg');
+}
+
+.rate-area > .rating-area__label:active {
 	position: relative;
 }

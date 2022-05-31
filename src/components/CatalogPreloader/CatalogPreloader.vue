@@ -1,17 +1,17 @@
 <template>
   <div class="lds-default">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
+    <div class="lds-default__dot"></div>
   </div>
 </template>
 

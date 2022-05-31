@@ -103,10 +103,12 @@
                 type="radio"
                 id="star-5"
                 value="5"
+                class="rating-area__input"
               >
               <label
                 for="star-5"
                 title="Оценка 5"
+                class="rating-area__label"
               >
               </label>	
               <input
@@ -115,10 +117,12 @@
                 type="radio"
                 id="star-4"
                 value="4"
+                class="rating-area__input"
               >
               <label
                 for="star-4"
                 title="Оценка 4"
+                class="rating-area__label"
               >
               </label>    
               <input
@@ -127,10 +131,12 @@
                 type="radio"
                 id="star-3"
                 value="3"
+                class="rating-area__input"
               >
               <label
                 for="star-3"
                 title="Оценка 3"
+                class="rating-area__label"
               >
               </label>  
               <input
@@ -139,10 +145,12 @@
                 type="radio"
                 id="star-2"
                 value="2"
+                class="rating-area__input"
               >
               <label
                 for="star-2"
                 title="Оценка 2"
+                class="rating-area__label"
               >
               </label>    
               <input
@@ -151,10 +159,12 @@
                 type="radio"
                 id="star-1"
                 value="1"
+                class="rating-area__input"
               >
               <label
                 for="star-1"
                 title="Оценка 1"
+                class="rating-area__label"
               >
               </label>
             </div>
