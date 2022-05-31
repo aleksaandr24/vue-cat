@@ -187,19 +187,8 @@
   }
 
   &__submit-button {
-    height: 40px;
     width: 219px;
     margin-top: 30px;
-    background-color: $accent-color;
-    border: none;
-    border-radius: 5px;
-    @include effect-shadow;
-    @include main-text(18px, 21px, $components-background-color);
-    
-    &:hover {
-      cursor: pointer;
-      background-color: $hover-color;
-    }
   }
 
   &__recieve {

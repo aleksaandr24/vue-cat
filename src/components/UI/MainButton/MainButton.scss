@@ -1,0 +1,13 @@
+.main-button {
+  height: 40px;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 5px;
+  @include effect-shadow;
+  @include main-text(18px, 21px, $components-background-color);
+
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-color;
+  }
+}

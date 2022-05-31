@@ -213,12 +213,13 @@
             </span>
           </div>
           <div class="review-form__submit">
-            <button
+            <MainButton
+              :elementText="'Отправить отзыв'"
+              :elementClass="'review-form__submit-button'"
+              @click="addToShopCart"
               type="submit"
-              class="review-form__submit-button"
-            >
-              Отправить отзыв
-            </button>
+              tabindex="21"
+            />
           </div>
         </form>
       </div>
@@ -233,9 +234,10 @@
 </template>
 
 <script>
-import {Tabs, Tab} from 'vue3-tabs-component'
 import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
+import MainButton from '@/components/UI/MainButton/MainButton.vue'
 import useVuelidate from '@vuelidate/core'
+import {Tabs, Tab} from 'vue3-tabs-component'
 import { required, helpers } from '@vuelidate/validators'
 import { mapActions } from 'vuex'
 
@@ -249,7 +251,8 @@ export default {
   components: {
     Tabs,
     Tab,
-    ReviewRating
+    ReviewRating,
+    MainButton
   },
   
   props: {

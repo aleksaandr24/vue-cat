@@ -95,12 +95,13 @@
           </span>
         </div>
         <div class="order-form__submit">
-          <button
+          <MainButton
+            :elementText="'Заказать'"
+            :elementClass="'order-form__submit-button'"
+            @click="addToShopCart"
             type="submit"
-            class="order-form__submit-button"
-          >
-            Заказать
-          </button>
+            tabindex="21"
+          />
         </div>
       </form>
     </div>
@@ -109,6 +110,7 @@
 
 <script>
 import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
+import MainButton from '@/components/UI/MainButton/MainButton.vue'
 import useVuelidate from '@vuelidate/core'
 import axios from 'axios'
 import { required, helpers } from '@vuelidate/validators'
@@ -118,7 +120,8 @@ export default {
   name: 'ModalCartBody',
 
   components: {
-    CatalogPreloader
+    CatalogPreloader,
+    MainButton
   },
   
   setup() {

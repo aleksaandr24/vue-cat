@@ -32,22 +32,20 @@
       {{ catalogItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
     </div>
     <div class="catalog-item__cart">
-      <button
+      <MainButton
         v-if="!isInShopCart(catalogItem.id)"
+        :elementText="'Добавить в корзину'"
+        :elementClass="'cart-button'"
         @click="addToShopCart"
         tabindex="21"
-        class="cart-button"
-      >
-        Добавить в корзину
-      </button>
-      <button
+      />
+      <MainButton
         v-else
+        :elementText="'В корзине'"
+        :elementClass="'cart-button cart-button_in-cart'"
         @click="deleteFromShopCart"
         tabindex="21"
-        class="cart-button cart-button_in-cart"
-      >
-        В корзине
-      </button>
+      />
     </div>
   </div>
   <Teleport to="#app">
@@ -70,6 +68,7 @@
 import ModalContainer from '@/components/ModalContainer/ModalContainer.vue'
 import ModalDetailedBody from '@/components/ModalDetailedBody/ModalDetailedBody.vue'
 import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
+import MainButton from '@/components/UI/MainButton/MainButton.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -78,7 +77,8 @@ export default {
   components: {
     ModalContainer,
     ModalDetailedBody,
-    CatalogPreloader
+    CatalogPreloader,
+    MainButton
   },
   
   data() {
