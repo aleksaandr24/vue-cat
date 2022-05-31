@@ -53,12 +53,8 @@
     @include main-text-bold(18px, 21px, $text-color);
   }
 
-  &__delete-button {
+  &__delete {
     padding: 10px 0px 0px 29px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    @include main-text(14px, 16px, $accent-color);
   }
 }
 

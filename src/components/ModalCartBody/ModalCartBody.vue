@@ -31,12 +31,10 @@
           {{ item.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
         </div>
         <div class="cart-item__delete">
-          <button
+          <TextButton
+            :elementText="'Убрать из корзины'"
             @click="this.removeShopCartItem(item.id)"
-            class="cart-item__delete-button"
-          >
-            Убрать из корзины
-          </button>
+          />
         </div>
       </div>
     </div>
@@ -107,6 +105,7 @@
 <script>
 import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
 import MainButton from '@/components/UI/MainButton/MainButton.vue'
+import TextButton from '@/components/UI/TextButton/TextButton.vue'
 import InputText from '@/components/UI/InputText/InputText.vue'
 import useVuelidate from '@vuelidate/core'
 import axios from 'axios'
@@ -119,7 +118,8 @@ export default {
   components: {
     CatalogPreloader,
     MainButton,
-    InputText
+    InputText,
+    TextButton
   },
   
   setup() {

@@ -1,0 +1,6 @@
+.text-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include main-text(14px, 16px, $accent-color);
+}
