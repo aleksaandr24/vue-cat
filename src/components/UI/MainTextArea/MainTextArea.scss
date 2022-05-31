@@ -1,0 +1,14 @@
+.text-area {
+  width: 100%;
+  margin: 10px 0px;
+  padding: 10px 0px 0px 10px;
+  border: 1px solid #898989;
+  box-sizing: border-box;
+  border-radius: 5px;
+  @include main-text(16px, 19px, $text-color);
+
+  &_error {
+    margin-bottom: 0px;
+    border-color: $accent-color;
+  }
+}

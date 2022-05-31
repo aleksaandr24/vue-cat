@@ -179,13 +179,12 @@
           </div>
           <div class="review-form__name">
             <label for="review-name">Имя</label><br>
-            <input
+            <InputText
               v-model.trim="reviewFormName"
-              :class="v$.reviewFormName.$invalid ? 'review-form__input review-form__input_error' : 'review-form__input'"
-              type="text"
+              :class="v$.reviewFormName.$invalid ? 'input-text_error' : ''"
+              :placeholder="'Имя'"
               id="review-name"
-              placeholder="Имя"
-            >
+            />
             <br>
             <span
               v-if="v$.reviewFormName.$invalid"
@@ -196,14 +195,13 @@
           </div>
           <div class="review-form__text">
             <label for="review-text">Отзыв</label><br>
-            <textarea
+            <MainTextArea
               v-model.trim="reviewFormText"
-              :class="v$.reviewFormName.$invalid ? 'review-form__textarea review-form__textarea_error' : 'review-form__textarea'"
-              rows="10"
+              :class="v$.reviewFormText.$invalid ? 'text-area text-area_error' : 'text-area'"
+              :rows="10"
+              :placeholder="'Отзыв'"
               id="review-text"
-              placeholder="Отзыв"
-            >
-            </textarea>
+            />
             <br>
             <span
               v-if="v$.reviewFormText.$invalid"
@@ -216,7 +214,6 @@
             <MainButton
               :elementText="'Отправить отзыв'"
               :elementClass="'review-form__submit-button'"
-              @click="addToShopCart"
               type="submit"
               tabindex="21"
             />
@@ -236,6 +233,8 @@
 <script>
 import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
 import MainButton from '@/components/UI/MainButton/MainButton.vue'
+import InputText from '@/components/UI/InputText/InputText.vue'
+import MainTextArea from '@/components/UI/MainTextArea/MainTextArea.vue'
 import useVuelidate from '@vuelidate/core'
 import {Tabs, Tab} from 'vue3-tabs-component'
 import { required, helpers } from '@vuelidate/validators'
@@ -252,7 +251,9 @@ export default {
     Tabs,
     Tab,
     ReviewRating,
-    MainButton
+    MainButton,
+    InputText,
+    MainTextArea
   },
   
   props: {

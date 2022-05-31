@@ -49,7 +49,7 @@
             <label for="order-name">Имя</label><br>
             <InputText
               v-model.trim="orderFormName"
-              :class="v$.orderFormName.$invalid ? 'input-text_error' : ''"
+              :class="v$.orderFormName.$invalid ? 'input-text input-text_error' : 'input-text'"
               :placeholder="'Имя'"
               id="order-name"
             />
@@ -64,7 +64,7 @@
             <label for="order-phone">Телефон</label><br>
             <InputText
               v-model.trim="orderFormPhone"
-              :class="v$.orderFormPhone.$invalid ? 'input-text_error' : ''"
+              :class="v$.orderFormPhone.$invalid ? 'input-text input-text_error' : 'input-text'"
               :placeholder="'+7 (950) 45-84-345'"
               id="order-phone"
             />
@@ -80,7 +80,7 @@
           <label for="order-address">Полный адрес</label><br>
           <InputText
             v-model.trim="orderFormAddress"
-            :class="v$.orderFormPhone.$invalid ? 'input-text_error' : ''"
+            :class="v$.orderFormAddress.$invalid ? 'input-text input-text_error' : 'input-text'"
             :placeholder="'Ул. Пушкина, дом'"
             id="order-address"
           />

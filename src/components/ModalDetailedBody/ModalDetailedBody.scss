@@ -146,37 +146,6 @@
     @include main-text(16px, 19px, #000000);
   }
 
-  &__input {
-    height: 41px;
-    width: 100%;
-    margin: 10px 0px;
-    padding-left: 10px;
-    border: 1px solid #898989;
-    box-sizing: border-box;
-    border-radius: 5px;
-    @include main-text(16px, 19px, $text-color);
-
-    &_error {
-      margin-bottom: 0px;
-      border-color: $accent-color;
-    }
-  }
-
-  &__textarea {
-    width: 100%;
-    margin: 10px 0px;
-    padding: 10px 0px 0px 10px;
-    border: 1px solid #898989;
-    box-sizing: border-box;
-    border-radius: 5px;
-    @include main-text(16px, 19px, $text-color);
-
-    &_error {
-      margin-bottom: 0px;
-      border-color: $accent-color;
-    }
-  }
-
   &__error {
     margin-bottom: 20px;
     @include main-text(14px, 16px, $accent-color);
