@@ -8,7 +8,7 @@
       class="side-menu__item"
     >
       <router-link
-        @click="this.$store.dispatch('makeCurrentSideMenuID', menuItem.id)"
+        @click="this.makeCurrentSideMenuID(menuItem.id)"
         :to="'/catalog/' + categoryID + '/' + menuItem.id"
         :class="['side-menu__link', {'side-menu__link_current' : menuItem.id === subCategoryID}]"
       >
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MainSideMenu',
@@ -41,6 +41,12 @@ export default {
     subCategoryID() {
       return parseInt(this.$route.params.subCategoryID)
     }
+  },
+
+  methods: {
+    ...mapActions([
+      'makeCurrentSideMenuID'
+    ])
   }
 }
 </script>

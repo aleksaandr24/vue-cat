@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'App',
   
@@ -16,7 +17,13 @@ export default {
       sessionStorage.setItem("store", JSON.stringify(this.$store.state))
     })
 
-    this.$store.dispatch('createCatalogJSON')
+    this.createCatalogJSON()
+  },
+
+  methods: {
+    ...mapActions([
+      'createCatalogJSON'
+    ])
   }
 }
 </script>

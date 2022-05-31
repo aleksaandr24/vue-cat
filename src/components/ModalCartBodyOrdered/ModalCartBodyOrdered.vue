@@ -5,11 +5,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'ModalCartBodyOrdered',
   
   mounted() {
-    this.$store.dispatch('dropShopCart')
+    this.dropShopCart()
+  },
+
+  methods: {
+    ...mapActions([
+      'dropShopCart'
+    ])
   }
 }
 </script>

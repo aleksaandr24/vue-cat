@@ -35,6 +35,7 @@ import ModalContainer from '@/components/ModalContainer/ModalContainer.vue'
 import ModalCartBody from '@/components/ModalCartBody/ModalCartBody.vue'
 import ModalCartBodyEmpty from '@/components/ModalCartBodyEmpty/ModalCartBodyEmpty.vue'
 import ModalCartBodyOrdered from '@/components/ModalCartBodyOrdered/ModalCartBodyOrdered.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'NavBarCart',
@@ -53,6 +54,10 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'changeShopOrdered'
+    ]),
+    
     modalShow() {
       this.showModal = true
       document.body.classList.add('modal-open')
@@ -60,7 +65,7 @@ export default {
 
     modalHide() {
       this.showModal = false
-      this.$store.dispatch('changeShopOrdered', false)
+      this.changeShopOrdered(false)
       document.body.classList.remove('modal-open')
     }
   }

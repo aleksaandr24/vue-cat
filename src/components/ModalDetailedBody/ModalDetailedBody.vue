@@ -227,6 +227,7 @@ import {Tabs, Tab} from 'vue3-tabs-component'
 import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
 import useVuelidate from '@vuelidate/core'
 import { required, helpers } from '@vuelidate/validators'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'ModalDetailedBody',
@@ -271,6 +272,10 @@ export default {
   },
   
   methods: {
+    ...mapActions([
+      'makeCurrentModalDetailedReview'
+    ]),
+    
     addReview() {
       if (!this.v$.reviewFormRating.$invalid &&
         !this.v$.reviewFormName.$invalid &&
@@ -281,7 +286,7 @@ export default {
           avatar: 'https://loremflickr.com/60/60',
           text: this.reviewFormText
         }
-        this.$store.dispatch('makeCurrentModalDetailedReview', reviewFormData)
+        this.makeCurrentModalDetailedReview(reviewFormData)
         this.reviewSended = true
         this.reviewFormRating = null
         this.reviewFormName = null
