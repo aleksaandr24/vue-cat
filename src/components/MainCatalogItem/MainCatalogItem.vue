@@ -67,9 +67,9 @@
 </template>
 
 <script>
-import ModalContainer from '@/components/ModalContainer.vue'
-import ModalDetailedBody from '@/components/ModalDetailedBody.vue'
-import CatalogPreloader from '@/components/CatalogPreloader.vue'
+import ModalContainer from '@/components/ModalContainer/ModalContainer.vue'
+import ModalDetailedBody from '@/components/ModalDetailedBody/ModalDetailedBody.vue'
+import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
 import { mapActions } from 'vuex'
 
 export default {

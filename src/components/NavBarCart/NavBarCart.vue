@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import ModalContainer from '@/components/ModalContainer.vue'
-import ModalCartBody from '@/components/ModalCartBody.vue'
-import ModalCartBodyEmpty from '@/components/ModalCartBodyEmpty.vue'
-import ModalCartBodyOrdered from '@/components/ModalCartBodyOrdered.vue'
+import ModalContainer from '@/components/ModalContainer/ModalContainer.vue'
+import ModalCartBody from '@/components/ModalCartBody/ModalCartBody.vue'
+import ModalCartBodyEmpty from '@/components/ModalCartBodyEmpty/ModalCartBodyEmpty.vue'
+import ModalCartBodyOrdered from '@/components/ModalCartBodyOrdered/ModalCartBodyOrdered.vue'
 
 export default {
   name: 'NavBarCart',

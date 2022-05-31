@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import MainSideMenu from '@/components/MainSideMenu.vue'
-import MainCatalog from '@/components/MainCatalog.vue'
+import MainSideMenu from '@/components/MainSideMenu/MainSideMenu.vue'
+import MainCatalog from '@/components/MainCatalog/MainCatalog.vue'
 
 export default {
   name: 'MainContainer',

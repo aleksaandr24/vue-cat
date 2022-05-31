@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import NavBarLogo from '@/components/NavBarLogo.vue'
-import NavBarMenu from '@/components/NavBarMenu.vue'
-import NavBarCart from '@/components/NavBarCart.vue'
+import NavBarLogo from '@/components/NavBarLogo/NavBarLogo.vue'
+import NavBarMenu from '@/components/NavBarMenu/NavBarMenu.vue'
+import NavBarCart from '@/components/NavBarCart/NavBarCart.vue'
 
 export default {
   name: 'NavBar',

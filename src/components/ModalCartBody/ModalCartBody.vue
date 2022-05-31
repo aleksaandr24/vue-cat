@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import CatalogPreloader from '@/components/CatalogPreloader.vue'
+import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
 import useVuelidate from '@vuelidate/core'
 import axios from 'axios'
 import { required, helpers } from '@vuelidate/validators'

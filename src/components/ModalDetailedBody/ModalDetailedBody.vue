@@ -224,7 +224,7 @@
 
 <script>
 import {Tabs, Tab} from 'vue3-tabs-component'
-import ReviewRating from '@/components/ReviewRating.vue'
+import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
 import useVuelidate from '@vuelidate/core'
 import { required, helpers } from '@vuelidate/validators'
 

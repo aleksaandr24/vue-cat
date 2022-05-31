@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import MainCatalogItem from '@/components/MainCatalogItem.vue'
+import MainCatalogItem from '@/components/MainCatalogItem/MainCatalogItem.vue'
 import { mapGetters } from 'vuex'
 
 export default {

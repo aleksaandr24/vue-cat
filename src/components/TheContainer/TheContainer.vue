@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import CatalogPreloader from '@/components/CatalogPreloader.vue'
-import NavBar from '@/components/NavBar.vue'
-import MainContainer from '@/components/MainContainer.vue'
+import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
+import NavBar from '@/components/NavBar/NavBar.vue'
+import MainContainer from '@/components/MainContainer/MainContainer.vue'
 
 export default {
   name: 'TheContainer',

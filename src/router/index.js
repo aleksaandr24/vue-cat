@@ -1,5 +1,5 @@
-import CatalogPage from '@/views/CatalogPage.vue'
-import NotFoundPage from '@/views/NotFoundPage.vue'
+import CatalogPage from '@/views/CatalogPage/CatalogPage.vue'
+import NotFoundPage from '@/views/NotFoundPage/NotFoundPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [

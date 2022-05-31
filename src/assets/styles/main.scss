@@ -1,7 +1,7 @@
 /*=============================== Common ===============================*/
-@import "./common/fonts",
-        "./common/variables",
-        "./common/mixins";
+@import "@/assets/styles/common/fonts.scss",
+        "@/assets/styles/common/variables.scss",
+        "@/assets/styles/common/mixins.scss";
 
 * {
   margin: 0;
@@ -22,21 +22,21 @@ body.modal-open {
 }
 
 /*=============================== Components ===========================*/
-@import "./components/App",
-        "./components/CatalogPreloader",
-        "./components/MainCatalog",
-        "./components/MainCatalogItem",
-        "./components/MainContainer",
-        "./components/MainSideMenu",
-        "./components/ModalCartBody",
-        "./components/ModalCartBodyEmpty",
-        "./components/ModalCartBodyOrdered",
-        "./components/ModalContainer",
-        "./components/ModalDetailedBody",
-        "./components/NavBar",
-        "./components/NavBarCart",
-        "./components/NavBarLogo",
-        "./components/NavBarMenu",
-        "./components/ReviewRating",
-        "./components/TheContainer",
-        "./components/NotFoundPage";
+@import "@/App",
+        "@/components/CatalogPreloader/CatalogPreloader.scss",
+        "@/components/MainCatalog/MainCatalog.scss",
+        "@/components/MainCatalogItem/MainCatalogItem.scss",
+        "@/components/MainContainer/MainContainer.scss",
+        "@/components/MainSideMenu/MainSideMenu.scss",
+        "@/components/ModalCartBody/ModalCartBody.scss",
+        "@/components/ModalCartBodyEmpty/ModalCartBodyEmpty.scss",
+        "@/components/ModalCartBodyOrdered/ModalCartBodyOrdered.scss",
+        "@/components/ModalContainer/ModalContainer.scss",
+        "@/components/ModalDetailedBody/ModalDetailedBody.scss",
+        "@/components/NavBar/NavBar.scss",
+        "@/components/NavBarCart/NavBarCart.scss",
+        "@/components/NavBarLogo/NavBarLogo.scss",
+        "@/components/NavBarMenu/NavBarMenu.scss",
+        "@/components/ReviewRating/ReviewRating.scss",
+        "@/components/TheContainer/TheContainer.scss",
+        "@/views/NotFoundPage/NotFoundPage.scss";
