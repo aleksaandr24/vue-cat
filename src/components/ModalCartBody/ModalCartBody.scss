@@ -77,21 +77,6 @@
     flex-basis: 48%;
   }
 
-  &__input {
-    height: 41px;
-    width: 100%;
-    margin: 10px 0px;
-    padding-left: 10px;
-    border: 1px solid #898989;
-    box-sizing: border-box;
-    border-radius: 5px;
-    @include main-text(16px, 19px, $text-color);
-
-    &_error {
-      border-color: $accent-color;
-    }
-  }
-
   &__error {
     @include main-text(14px, 16px, $accent-color);
   }

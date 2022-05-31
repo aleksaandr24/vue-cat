@@ -47,13 +47,12 @@
         <div class="order-form__name">
           <div class="order-form__field">
             <label for="order-name">Имя</label><br>
-            <input
+            <InputText
               v-model.trim="orderFormName"
-              :class="v$.orderFormName.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'"
-              type="text"
+              :class="v$.orderFormName.$invalid ? 'input-text_error' : ''"
+              :placeholder="'Имя'"
               id="order-name"
-              placeholder="Имя"
-            >
+            />
             <span
               v-if="v$.orderFormName.$invalid"
               class="order-form__error"
@@ -63,13 +62,12 @@
           </div>
           <div class="order-form__field">
             <label for="order-phone">Телефон</label><br>
-            <input
+            <InputText
               v-model.trim="orderFormPhone"
-              :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'"
-              type="text"
+              :class="v$.orderFormPhone.$invalid ? 'input-text_error' : ''"
+              :placeholder="'+7 (950) 45-84-345'"
               id="order-phone"
-              placeholder="+7 (950) 45-84-345"
-            >
+            />
             <span
               v-if="v$.orderFormPhone.$invalid"
               class="order-form__error"
@@ -80,13 +78,12 @@
         </div>
         <div class="order-form__address">
           <label for="order-address">Полный адрес</label><br>
-          <input
+          <InputText
             v-model.trim="orderFormAddress"
-            :class="v$.orderFormPhone.$invalid ? 'order-form__input order-form__input_error' : 'order-form__input'"
-            type="text"
+            :class="v$.orderFormPhone.$invalid ? 'input-text_error' : ''"
+            :placeholder="'Ул. Пушкина, дом'"
             id="order-address"
-            placeholder="Ул. Пушкина, дом"
-          >
+          />
           <span
             v-if="v$.orderFormAddress.$invalid"
             class="order-form__error"
@@ -98,7 +95,6 @@
           <MainButton
             :elementText="'Заказать'"
             :elementClass="'order-form__submit-button'"
-            @click="addToShopCart"
             type="submit"
             tabindex="21"
           />
@@ -111,6 +107,7 @@
 <script>
 import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
 import MainButton from '@/components/UI/MainButton/MainButton.vue'
+import InputText from '@/components/UI/InputText/InputText.vue'
 import useVuelidate from '@vuelidate/core'
 import axios from 'axios'
 import { required, helpers } from '@vuelidate/validators'
@@ -121,7 +118,8 @@ export default {
 
   components: {
     CatalogPreloader,
-    MainButton
+    MainButton,
+    InputText
   },
   
   setup() {
