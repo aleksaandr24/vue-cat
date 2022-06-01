@@ -30,34 +30,6 @@
   @include main-text-bold(18px, 21px, $text-color)
 }
 
-.item-tabs {
-  margin-top: 30px;
-
-  &__panels {
-    padding-top: 10px;
-  }
-  
-  &__nav {
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  &__item {
-    margin-right: 30px;
-    border-bottom: 3px solid #E4E2E2;
-  
-    &_active {
-      border-bottom: 3px solid $accent-color;
-    }
-  }
-  
-  &__link {
-    @include main-text(16px, 19px, $text-color);
-    text-decoration: none;
-  }
-}
-
 .item-description {
   @include main-text(16px, 19px, $text-color);
 }

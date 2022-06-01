@@ -12,32 +12,23 @@
   <div class="detailed-price">
     {{ catalogItemFull.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}) }}
   </div>
-  <Tabs
-    :options="{ useUrlFragment: false }"
-    wrapper-class="item-tabs"
-    panels-wrapper-class="item-tabs__panels"
-    nav-class="item-tabs__nav"
-    nav-item-class="item-tabs__item"
-    nav-item-active-class="item-tabs__item_active"
-    nav-item-link-class="item-tabs__link"
-    nav-item-link-active-class="item-tabs__link_active"
-  >
-    <Tab
-      panel-class="item_tabs__panel"
-      id="item-description"
-      name="Описание"
-    >
-      <div v-html="catalogItemFull.descr"></div>
-    </Tab>
-    <Tab
-      id="item-properties"
-      name="Характеристики"
-    >
-      <div
-        v-for="(prop, index) in catalogItemFull.props"
-        :key="index"
-        class="item-properties__row"
+  <div class="detailed-tabs">
+    <TabsContainer v-model="active">
+      <MainTab
+        title="Описание"
+        tab-key="tab1"
       >
+        <div v-html="catalogItemFull.descr"></div>
+      </MainTab>
+      <MainTab
+        title="Характеристики"
+        tab-key="tab2"
+      >
+        <div
+          v-for="(prop, index) in catalogItemFull.props"
+          :key="index"
+          class="item-properties__row"
+        >
         <div class="item-properties__row-caption">
           {{ prop.caption }}
         </div>
@@ -45,12 +36,12 @@
           {{ prop.value }}&nbsp;{{ prop.measure }}
         </div>
       </div>
-    </Tab>
-    <Tab
-      id="item-reviews"
-      name="Отзывы"
-    >
-      <div v-if="catalogItemFull.reviews.length > 0">
+      </MainTab>
+      <MainTab
+        title="Отзывы"
+        tab-key="tab3"
+      >
+        <div v-if="catalogItemFull.reviews.length > 0">
         <div
           v-for="(prop, index) in catalogItemFull.reviews.slice().reverse()"
           :key="index"
@@ -84,12 +75,12 @@
       >
         Отзывов нет
       </div>
-    </Tab>
-    <Tab
-      id="item_feedback-review"
-      name="Оставить отзыв"
-    >
-      <div v-if="!reviewSended">
+      </MainTab>
+      <MainTab
+        title="Оставить отзыв"
+        tab-key="tab4"
+      >
+        <div v-if="!reviewSended">
         <form
           @submit.prevent="addReview"
           class="review-form"
@@ -181,7 +172,7 @@
             <label for="review-name">Имя</label><br>
             <InputText
               v-model.trim="reviewFormName"
-              :class="v$.reviewFormName.$invalid ? 'input-text_error' : ''"
+              :class="v$.reviewFormName.$invalid ? 'input-text input-text_error' : 'input-text'"
               :placeholder="'Имя'"
               id="review-name"
             />
@@ -226,30 +217,29 @@
       >
         <h2 class="review-form__recieve-title">Отзыв получен</h2>
       </div>
-    </Tab>
-  </tabs>
+      </MainTab>
+    </TabsContainer>
+  </div>
 </template>
 
 <script>
+import TabsContainer from '@/components/UI/TabsContainer/TabsContainer.vue'
+import MainTab from '@/components/UI/MainTab/MainTab.vue'
 import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
 import MainButton from '@/components/UI/MainButton/MainButton.vue'
 import InputText from '@/components/UI/InputText/InputText.vue'
 import MainTextArea from '@/components/UI/MainTextArea/MainTextArea.vue'
+import { ref } from 'vue'
 import useVuelidate from '@vuelidate/core'
-import {Tabs, Tab} from 'vue3-tabs-component'
 import { required, helpers } from '@vuelidate/validators'
 import { mapActions } from 'vuex'
 
 export default {
   name: 'ModalDetailedBody',
   
-  setup() {
-    return { v$: useVuelidate() }
-  },
-  
   components: {
-    Tabs,
-    Tab,
+    TabsContainer,
+    MainTab,
     ReviewRating,
     MainButton,
     InputText,
@@ -260,6 +250,15 @@ export default {
     catalogItemFull: Object
   },
   
+  setup() {
+    const active = ref(1)
+    
+    return {
+      active,
+      v$: useVuelidate()
+    }
+  },
+
   data() {
     return {
       reviewFormRating: null,

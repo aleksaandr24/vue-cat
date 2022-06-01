@@ -31,8 +31,14 @@
 
 <script>
 export default {
+  name: 'ModalContainer',
+
   props: {
     show: Boolean
-  }
+  },
+
+  emits: [
+    'close'
+  ]
 }
 </script>
