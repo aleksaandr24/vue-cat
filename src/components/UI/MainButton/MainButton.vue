@@ -1,8 +1,8 @@
 <template>
   <button
-    :class="'main-button ' + elementClass"
+    :class="elementClass"
   >
-    {{ elementText }}
+    <slot/>
   </button>
 </template>
 
@@ -11,7 +11,6 @@ export default {
   name: 'MainButton',
 
   props: {
-    elementText: String,
     elementClass: String
   }
 }

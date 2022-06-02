@@ -34,18 +34,20 @@
     <div class="catalog-item__cart">
       <MainButton
         v-if="!isInShopCart(catalogItem.id)"
-        :elementText="'Добавить в корзину'"
-        :elementClass="'cart-button'"
+        :elementClass="'main-button cart-button'"
         @click="addToShopCart"
         tabindex="21"
-      />
+      >
+        Добавить в корзину
+      </MainButton>
       <MainButton
         v-else
-        :elementText="'В корзине'"
-        :elementClass="'cart-button cart-button_in-cart'"
+        :elementClass="'main-button cart-button cart-button_in-cart'"
         @click="deleteFromShopCart"
         tabindex="21"
-      />
+      >
+        В корзине
+      </MainButton>
     </div>
   </div>
   <Teleport to="#app">

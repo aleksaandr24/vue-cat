@@ -2,7 +2,7 @@
   <div
     v-if="selectedTabState.selectedTabKey == tabKey"
   >
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 

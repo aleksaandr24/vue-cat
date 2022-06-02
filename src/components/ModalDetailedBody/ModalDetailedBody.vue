@@ -203,11 +203,12 @@
           </div>
           <div class="review-form__submit">
             <MainButton
-              :elementText="'Отправить отзыв'"
-              :elementClass="'review-form__submit-button'"
+              :elementClass="'main-button review-form__submit-button'"
               type="submit"
               tabindex="21"
-            />
+            >
+              Отправить отзыв
+            </MainButton>
           </div>
         </form>
       </div>
