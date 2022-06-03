@@ -5,24 +5,20 @@
     :placeholder="elementPlaceholder"
     :rows="elementRows"
     @input="$emit('update:modelValue', $event.target.value)"
-    type="text"
   >
   </textarea>
 </template>
 
 <script>
+import InputText from '@/components/UI/InputText/InputText.vue'
+
 export default {
   name: 'TextArea',
 
+  extends: InputText,
+
   props: {
-    modelValue: String,
-    elementClass: String,
-    elementPlaceholder: String,
     elementRows: Number
-  },
-  
-  emits: [
-    'update:modelValue'
-  ]
+  }
 }
 </script>
