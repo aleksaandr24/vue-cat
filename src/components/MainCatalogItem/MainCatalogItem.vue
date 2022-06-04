@@ -33,7 +33,14 @@
     </div>
     <div class="catalog-item__cart">
       <MainButton
-        v-if="!isInShopCart(catalogItem.id)"
+        v-if="buttonLoading"
+        :elementClass="'main-button cart-button cart-button_loading'"
+        disabled
+      >
+        <ButtonPreloader/>
+      </MainButton>
+      <MainButton
+        v-else-if="!isInShopCart(catalogItem.id)"
         :elementClass="'main-button cart-button'"
         @click="addToShopCart"
         tabindex="21"
@@ -69,6 +76,7 @@
 <script>
 import ModalContainer from '@/components/ModalContainer/ModalContainer.vue'
 import ModalDetailedBody from '@/components/ModalDetailedBody/ModalDetailedBody.vue'
+import ButtonPreloader from '@/components/ButtonPreloader/ButtonPreloader.vue'
 import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
 import MainButton from '@/components/UI/MainButton/MainButton.vue'
 import { mapActions } from 'vuex'
@@ -79,6 +87,7 @@ export default {
   components: {
     ModalContainer,
     ModalDetailedBody,
+    ButtonPreloader,
     CatalogPreloader,
     MainButton
   },
@@ -86,7 +95,8 @@ export default {
   data() {
     return {
       showModal: false,
-      imageLoading: true
+      imageLoading: true,
+      buttonLoading: false
     }
   },
   
@@ -103,11 +113,17 @@ export default {
     ]),
     
     addToShopCart() {
-      this.makePushShopCartItem(this.catalogItem)
+      this.buttonLoading = true
+      this.makePushShopCartItem(this.catalogItem).then(
+        this.buttonLoading = false
+      )
     },
 
     deleteFromShopCart() {
-      this.removeShopCartItem(this.catalogItem.id)
+      this.buttonLoading = true
+      this.removeShopCartItem(this.catalogItem.id).then(
+        this.buttonLoading = false
+      )
     },
     
     isInShopCart(itemID) {

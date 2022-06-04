@@ -10,6 +10,11 @@
     cursor: pointer;
     background-color: $hover-color;
   }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: $disabled-color;
+  }
 }
 
 .text-button {
@@ -17,4 +22,8 @@
   border: none;
   cursor: pointer;
   @include main-text(14px, 16px, $accent-color);
+
+  &:disabled {
+    pointer-events: none;
+  }
 }

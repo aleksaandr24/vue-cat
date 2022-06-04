@@ -126,7 +126,6 @@ export default createStore({
         data.forEach(n => tree[n[parentField]].children.push(tree[n[idField]]))
         return tree[rootParent].children
       }
-      commit('setCatalogDataLoading', true)
       await axios
         .get(state.dataJsonAPI)
         .then(response => {
@@ -134,12 +133,15 @@ export default createStore({
           commit('setCatalogData', responseData)
           commit('setNavBarMenuCurrentID', state.catalogData[0].id)
           commit('setSideMenuCurrentID', state.catalogData[0].children[0].id)
-          setTimeout(() => state.catalogDataLoading = false, 2000)
         })
         .catch(error => {
           console.log(error)
-          commit('setCatalogDataLoading', false)
+          
         })
+    },
+
+    makeCatalogDataLoading({ commit }, flag) {
+      commit('setCatalogDataLoading', flag)
     },
 
     makeCurrentNavBarID({ commit }, id) {
@@ -150,12 +152,14 @@ export default createStore({
       commit('setSideMenuCurrentID', id)
     },
 
-    makePushShopCartItem({ commit }, item) {
+    async makePushShopCartItem({ commit }, item) {
       commit('addShopCart', item)
+      return true
     },
 
-    removeShopCartItem({ commit }, item) {
+    async removeShopCartItem({ commit }, item) {
       commit('deleteShopCart', item)
+      return true
     },
 
     changeShopOrdered({ commit }, flag) {
@@ -180,8 +184,9 @@ export default createStore({
         .catch(error => console.log(error))
     },
 
-    makeCurrentModalDetailedReview({ commit }, review) {
+    async makeCurrentModalDetailedReview({ commit }, review) {
       commit('addtModalDetailedCurrentItemReview', review)
+      return true
     }
   }
 })

@@ -71,6 +71,11 @@
 .cart-button {
   width: 219px;  
   
+  &_loading {
+    display: flex;
+    justify-content: center;
+  }
+
   &_in-cart {
     width: 169px;
     padding-left: 24px;

@@ -203,6 +203,14 @@
           </div>
           <div class="review-form__submit">
             <MainButton
+              v-if="reviewButtonLoading"
+              :elementClass="'main-button review-form__submit-button review-form__submit-button_loading'"
+              disabled
+            >
+              <ButtonPreloader/>
+            </MainButton>
+            <MainButton
+              v-else
               :elementClass="'main-button review-form__submit-button'"
               type="submit"
               tabindex="21"
@@ -224,6 +232,7 @@
 </template>
 
 <script>
+import ButtonPreloader from '@/components/ButtonPreloader/ButtonPreloader.vue'
 import TabsContainer from '@/components/UI/TabsContainer/TabsContainer.vue'
 import MainTab from '@/components/UI/MainTab/MainTab.vue'
 import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
@@ -239,6 +248,7 @@ export default {
   name: 'ModalDetailedBody',
   
   components: {
+    ButtonPreloader,
     TabsContainer,
     MainTab,
     ReviewRating,
@@ -265,11 +275,12 @@ export default {
       reviewFormRating: null,
       reviewFormName: null,
       reviewFormText: null,
-      reviewSended: false
+      reviewSended: false,
+      reviewButtonLoading: false
     }
   },
   
-  validations () {
+  validations() {
     return {
       reviewFormRating: {
         required: helpers.withMessage('Оценка не должна быть пустой', required)
@@ -292,15 +303,18 @@ export default {
     
     addReview() {
       if (!this.v$.reviewFormRating.$invalid &&
-        !this.v$.reviewFormName.$invalid &&
-        !this.v$.reviewFormText.$invalid) {
+          !this.v$.reviewFormName.$invalid &&
+          !this.v$.reviewFormText.$invalid) {
+        this.reviewButtonLoading = true
         let reviewFormData = {
           rate: parseInt(this.reviewFormRating),
           author: this.reviewFormName,
           avatar: 'https://loremflickr.com/60/60',
           text: this.reviewFormText
         }
-        this.makeCurrentModalDetailedReview(reviewFormData)
+        this.makeCurrentModalDetailedReview(reviewFormData).then(
+          this.reviewButtonLoading = false
+        )
         this.reviewSended = true
         this.reviewFormRating = null
         this.reviewFormName = null

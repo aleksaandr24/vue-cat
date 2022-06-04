@@ -17,12 +17,16 @@ export default {
       sessionStorage.setItem("store", JSON.stringify(this.$store.state))
     })
 
-    this.createCatalogJSON()
+    this.makeCatalogDataLoading(true)
+    this.createCatalogJSON().then(
+      setTimeout(() => this.makeCatalogDataLoading(false), 1000)
+    )
   },
 
   methods: {
     ...mapActions([
-      'createCatalogJSON'
+      'createCatalogJSON',
+      'makeCatalogDataLoading'
     ])
   }
 }
