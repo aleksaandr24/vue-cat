@@ -203,15 +203,8 @@
           </div>
           <div class="review-form__submit">
             <MainButton
-              v-if="reviewButtonLoading"
-              :elementClass="'main-button review-form__submit-button review-form__submit-button_loading'"
-              disabled
-            >
-              <ButtonPreloader/>
-            </MainButton>
-            <MainButton
-              v-else
               :elementClass="'main-button review-form__submit-button'"
+              :loading="reviewButtonLoading"
               type="submit"
               tabindex="21"
             >
@@ -232,7 +225,6 @@
 </template>
 
 <script>
-import ButtonPreloader from '@/components/ButtonPreloader/ButtonPreloader.vue'
 import TabsContainer from '@/components/UI/TabsContainer/TabsContainer.vue'
 import MainTab from '@/components/UI/MainTab/MainTab.vue'
 import ReviewRating from '@/components/ReviewRating/ReviewRating.vue'
@@ -248,7 +240,6 @@ export default {
   name: 'ModalDetailedBody',
   
   components: {
-    ButtonPreloader,
     TabsContainer,
     MainTab,
     ReviewRating,

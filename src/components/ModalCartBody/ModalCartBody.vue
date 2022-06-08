@@ -34,15 +34,8 @@
         </div>
         <div class="cart-item__delete">
           <MainButton
-            v-if="removeButtonLoading"
             :elementClass="'text-button'"
-            disabled
-          >
-            &#8230;
-          </MainButton>
-          <MainButton
-            v-else
-            :elementClass="'text-button'"
+            :loading="removeButtonLoading"
             @click="this.removeShopCart(item.id)"
           >
             Убрать из корзины
@@ -109,17 +102,10 @@
         </div>
         <div class="order-form__submit">
           <MainButton
-            v-if="orderButtonLoading"
-            :elementClass="'main-button order-form__submit-button order-form__submit-button_loading'"
-            disabled
-          >
-            <ButtonPreloader/>
-          </MainButton>
-          <MainButton
-            v-else
             :elementClass="'main-button order-form__submit-button'"
             type="submit"
             tabindex="21"
+            :loading="orderButtonLoading"
           >
             Заказать
           </MainButton>
@@ -130,7 +116,6 @@
 </template>
 
 <script>
-import ButtonPreloader from '@/components/ButtonPreloader/ButtonPreloader.vue'
 import CatalogPreloader from '@/components/CatalogPreloader/CatalogPreloader.vue'
 import MainButton from '@/components/UI/MainButton/MainButton.vue'
 import InputText from '@/components/UI/InputText/InputText.vue'
@@ -143,7 +128,6 @@ export default {
   name: 'ModalCartBody',
 
   components: {
-    ButtonPreloader,
     CatalogPreloader,
     MainButton,
     InputText
